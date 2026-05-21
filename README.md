@@ -1,6 +1,6 @@
 *This project was created as part of the 42 curriculum by rodrpere*
 
-#Table of Contents
+# Table of Contents
 
 1. [Description](#description)
 2. [Resources](#resources)
