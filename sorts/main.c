@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/24 21:55:15 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 17:20:41 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	int		*array;
-	t_list	*list;
+	t_tree	*list;
 	int		check;
 	int		skip;
 	// int		strat;
@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 		printf("array[%d]: %d\n", i, array[i]);
 		i++;
 	}
-	list = create_list(array, argc - 1 - skip);
-	printf ("size of list: %d\n", ft_lstsize(list));
-	return (free_list(list), free(array), 0);
+	list = insertion(array, argc - 1 - skip);
+	printf("tree is %d deep", tree_size(list));
+	return (free(array), 0);
 }
