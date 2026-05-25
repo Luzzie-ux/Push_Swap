@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/25 17:19:25 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:32:02 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		isnum(char *argv);
 int		ft_atoi(const char *nptr);
 int		parser(int argc, char **argv);
 int		loop(int i, int argc, char **argv);
+
+t_tree	*new_node(void *content);
 t_tree	*insertion(int *array, int size);
 void	insert(t_tree **root, int value);
 int		tree_size(t_tree *root);
