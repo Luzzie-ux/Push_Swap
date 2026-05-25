@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/25 17:20:41 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:13:44 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts.h"
+#include "../sorts.h"
 
 int	flags(char *argv)
 {

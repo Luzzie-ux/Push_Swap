@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/24 21:55:54 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:13:56 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts.h"
+#include "../sorts.h"
 
 int	ft_atoi(const char *nptr)
 {

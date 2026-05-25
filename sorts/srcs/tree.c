@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:06:59 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/25 17:21:49 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:13:54 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts.h"
+#include "../sorts.h"
 
 t_tree	*new_node(void *content)
 {

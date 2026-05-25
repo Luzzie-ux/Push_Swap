@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:41:38 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/24 21:51:52 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:13:50 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts.h"
+#include "../sorts.h"
 
 void	free_list(t_list *head)
 {
