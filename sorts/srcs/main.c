@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:39:55 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 11:48:10 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ t_list	*extension(int check, int argc, char **argv)
 	while (i < ((argc - 1 - skip)))
 	{
 		array[i] = ft_atoi(argv[i + 1 + skip]);
-		printf("stack_a[%d]=%d\n", i, array[i]);
+		ft_printf("stack_a[%d]=%d\n", i, array[i]);
 		i++;
 	}
 	stack_a = create_list(array, argc - 1 - skip);
-	printf("stack_a size: %d\n", ft_lstsize(stack_a));
+	ft_printf("stack_a size: %d\n", ft_lstsize(stack_a));
 	return (free(array), stack_a);
 }
