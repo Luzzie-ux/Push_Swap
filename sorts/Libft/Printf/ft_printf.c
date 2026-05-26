@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 11:18:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/12 14:40:06 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 11:59:33 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	return (result); 
+	return (result);
 }
