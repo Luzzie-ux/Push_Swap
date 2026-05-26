@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/25 19:13:44 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 11:26:38 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	int		*array;
-	t_tree	*list;
+	/* t_tree	*list; */
+	t_list	*stack_a;
 	int		check;
 	int		skip;
 	// int		strat;
@@ -78,13 +79,16 @@ int	main(int argc, char **argv)
 	array = (int *)malloc(sizeof(int) * (argc - 1 - skip));
 	if (!array)
 		return (0);
-	while (i < ((argc - 1) - skip))
+	while (i < ((argc - 1 - skip)))
 	{
 		array[i] = ft_atoi(argv[i + 1 + skip]);
-		printf("array[%d]: %d\n", i, array[i]);
+		printf("stack_a[%d]=%d\n", i, array[i]);
 		i++;
 	}
-	list = insertion(array, argc - 1 - skip);
-	printf("tree is %d deep", tree_size(list));
-	return (free(array), 0);
+	stack_a = create_list(array, argc - 1 - skip);
+	printf("stack_a size: %d\n", ft_lstsize(stack_a));
+	return (free_list(stack_a), free(array), 0);
 }
+
+/* list = insertion(array, argc - 1 - skip);
+printf("tree is %d deep", tree_size(list)); */
