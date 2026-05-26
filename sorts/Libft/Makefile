@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/16 11:52:23 by rodrpere          #+#    #+#              #
-#    Updated: 2026/04/29 13:13:06 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/05/25 11:10:09 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,36 @@ SRCS = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c 
+PRINTF = Printf/libftprintf.a
+GNL_DIR = GNL
+GNL_SRCS = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
+GNL_OBJS = $(GNL_SRCS:.c=.o)
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS) $^
+$(PRINTF):
+	$(MAKE) -C Printf
+
+$(GNL_DIR)/%.o: $(GNL_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS) $(PRINTF) $(GNL_OBJS)
+	cp $(PRINTF) $(NAME)
+	ar rcs $(NAME) $(OBJS) $(GNL_OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(MAKE) -C Printf clean
+	rm -f $(OBJS) $(GNL_OBJS)
 
 fclean: clean
+	$(MAKE) -C Printf fclean
 	rm -f $(NAME)
 
 re: fclean all

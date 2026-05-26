@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:13:13 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 11:40:09 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_tree	*insertion(int *array, int size);
 void	insert(t_tree **root, int value);
 int		tree_size(t_tree *root);
 
+t_list	*extension(int check, int argc, char **argv);
 t_list	*create_list(int *arr, int size);
 void	free_list(t_list *head);
 

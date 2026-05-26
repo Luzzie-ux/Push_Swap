@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:26:38 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 11:39:55 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,31 @@ int	parser(int argc, char **argv)
 }
 
 int	main(int argc, char **argv)
+{	
+	int		check;
+	int		strat;
+	int		bench;
+	t_list	*stack_a;
+
+	if (argc <= 3)
+	return (ft_putstr_fd("ERROR\n",2), 0);
+	check = parser(argc, argv);
+	if (check == -1)
+	return (ft_putstr_fd("ERROR\n",2), 0);
+	bench = check % 10;
+	strat = (check / 10) % 10;
+	stack_a = extension(check, argc, argv);
+	return (free_list(stack_a), 0);
+}
+
+t_list	*extension(int check, int argc, char **argv)
 {
 	int		i;
 	int		*array;
-	/* t_tree	*list; */
-	t_list	*stack_a;
-	int		check;
 	int		skip;
-	// int		strat;
-	// int		bench;
-
+	t_list	*stack_a;
+	
 	i = 0;
-	if (argc <= 3)
-		return (printf("ERROR\n"), 0);
-	check = parser(argc, argv);
-	if (check == -1)
-		return (printf("ERROR\n"), 0);
-	// bench = check % 10;
-	// strat = (check / 10) % 10;
 	skip = check / 100;
 	array = (int *)malloc(sizeof(int) * (argc - 1 - skip));
 	if (!array)
@@ -87,8 +94,5 @@ int	main(int argc, char **argv)
 	}
 	stack_a = create_list(array, argc - 1 - skip);
 	printf("stack_a size: %d\n", ft_lstsize(stack_a));
-	return (free_list(stack_a), free(array), 0);
+	return (free(array), stack_a);
 }
-
-/* list = insertion(array, argc - 1 - skip);
-printf("tree is %d deep", tree_size(list)); */

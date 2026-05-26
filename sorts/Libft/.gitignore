@@ -1,0 +1,9 @@
+*.a
+*.o
+GNL/*.o
+Printf/*.a
+Printf/*.o
+Printf/en.subject.pdf
+GNL/en.subject.pdf
+GNL/main.c
+a.out
