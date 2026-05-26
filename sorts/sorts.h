@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:47:48 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/26 12:05:17 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,17 @@
 # include <unistd.h>
 
 //prototipo
-typedef struct s_tree
-{
-	void			*content;
-	struct s_tree	*left;
-	struct s_tree	*right;
-}					t_tree;
 
+//main
 int		flags(char *argv);
 int		isnum(char *argv);
 int		ft_atoi(const char *nptr);
 int		parser(int argc, char **argv);
 int		loop(int i, int argc, char **argv);
 
-t_tree	*new_node(void *content);
-t_tree	*insertion(int *array, int size);
-void	insert(t_tree **root, int value);
-int		tree_size(t_tree *root);
+//stack functions
 
+//lists
 t_list	*extension(int check, int argc, char **argv);
 t_list	*create_list(int *arr, int size);
 void	free_list(t_list *head);
