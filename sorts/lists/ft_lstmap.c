@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 16:24:49 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/04/29 17:08:26 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/04/30 14:54:15 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/05/27 14:10:10 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../sorts.h"
 
-int	ft_lstsize(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(int), void (*del)(int))
 {
-	int	i;
+	t_list	*node;
+	t_list	*nlist;
+	void	*content;
 
-	i = 0;
-	if (!lst)
-		return (0);
+	if (!lst || !f || !del)
+		return (NULL);
+	nlist = NULL;
 	while (lst)
 	{
-		i++;
+		content = (*f)((int)lst->content);
+		node = ft_lstnew((long)content);
+		if (!node)
+		{
+			(*del)((long)content);
+			ft_lstclear(&nlist, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&nlist, node);
 		lst = (*lst).next;
 	}
-	return (i);
+	return (nlist);
 }

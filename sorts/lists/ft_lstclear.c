@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 16:48:39 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/04/29 17:07:33 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/04/29 17:17:32 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/05/27 14:06:29 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list	*ft_lstlast(t_list *lst)
+#include "../sorts.h"
+void	ft_lstclear(t_list **lst, void (*del)(int))
 {
-	if (!lst)
-		return (NULL);
-	while ((*lst).next)
-		lst = (*lst).next;
-	return (lst);
+	t_list	*cleaner;
+	t_list	*next;
+
+	if (!lst || !del)
+		return ;
+	cleaner = *lst;
+	while (cleaner)
+	{
+		next = cleaner->next;
+		(*del)((*cleaner).content);
+		free(cleaner);
+		cleaner = next;
+	}
+	*lst = NULL;
 }

@@ -6,14 +6,14 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/24 16:58:50 by rodrpere          #+#    #+#              #
-#    Updated: 2026/05/25 19:13:14 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/05/27 12:48:38 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -g
-SRCS= $(wildcard srcs/*.c)
+SRCS= $(wildcard srcs/*.c) $(wildcard lists/*.c)
 LIBFT= Libft/libft.a
 OBJS= $(SRCS:.c=.o)
 

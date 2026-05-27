@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 17:35:33 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/04/30 15:16:15 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/04/29 17:08:45 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/05/27 14:05:20 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../sorts.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstdelone(t_list *lst, void (*del)(int))
 {
-	if (!lst || !f)
+	if (!lst || !del)
 		return ;
-	while (lst)
-	{
-		(*f)(lst->content);
-		lst = lst->next;
-	}
+	(*del)(lst->content);
+	free(lst);
 }

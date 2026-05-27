@@ -6,21 +6,21 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:49:07 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 17:55:11 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:43:33 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sorts.h"
+#include "../sorts.h"
 
 void	sa(t_list *stack_a)
 {
-	int		temp;
+	long		temp;
 
 	if (ft_lstsize(stack_a) < 2)
 		return ;
 	else
 	{
-		temp = (int)stack_a->content;
+		temp = stack_a->content;
 		stack_a->content = stack_a->next->content;
 		stack_a->next->content = temp;
 	}
@@ -34,7 +34,7 @@ void	sb(t_list *stack_b)
 		return ;
 	else
 	{
-		temp = (int)stack_b->content;
+		temp = stack_b->content;
 		stack_b->content = stack_b->next->content;
 		stack_b->next->content = temp;
 	}

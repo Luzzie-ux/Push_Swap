@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:58:55 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:32:32 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 	int		strat;
 	int		bench;
 	t_list	*stack_a;
+	
 
 	if (argc <= 3)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
@@ -80,7 +81,7 @@ t_list	*extension(int check, int argc, char **argv)
 	int		*array;
 	int		skip;
 	t_list	*stack_a;
-
+	
 	i = 0;
 	skip = check / 100;
 	array = (int *)malloc(sizeof(int) * (argc - 1 - skip));
