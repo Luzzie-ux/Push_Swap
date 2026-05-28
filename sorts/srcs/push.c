@@ -6,24 +6,42 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:45:58 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/27 14:01:20 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/28 11:40:48 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sorts.h"
 
-void	pa(t_list *stack_b, t_list *stack_a)
+void	pa(t_list **stack_b, t_list **stack_a)
 {
-	if (ft_lstsize(stack_b) == 0)
+	t_list	*node;
+
+	if (!*stack_b)
 		return ;
-	else
-		stack_a->content = stack_b->content;
+	node = *stack_b;
+	(*stack_b) = (*stack_b)->next;
+	if (*stack_b)
+		(*stack_b)->prev = NULL;
+	node->next = (*stack_a);
+	node->prev = NULL;
+	if (*stack_a)
+		(*stack_a)->prev = node;
+	(*stack_a) = node;
 }
 
-void	pb(t_list *stack_b, t_list *stack_a)
+void	pb(t_list **stack_b, t_list **stack_a)
 {
-	if (ft_lstsize(stack_a) == 0)
+	t_list	*node;
+
+	if (!*stack_a)
 		return ;
-	else
-		stack_b->content = stack_a->content;
+	node = *stack_a;
+	(*stack_a) = (*stack_a)->next;
+	if (*stack_a)
+		(*stack_a)->prev = NULL;
+	node->next = (*stack_b);
+	node->prev = NULL;
+	if (*stack_b)
+		(*stack_b)->prev = node;
+	(*stack_b) = node;
 }

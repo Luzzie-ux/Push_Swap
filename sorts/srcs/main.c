@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/27 14:32:32 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/28 11:45:09 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ int	main(int argc, char **argv)
 	bench = check % 10;
 	strat = (check / 10) % 10;
 	stack_a = extension(check, argc, argv);
+	t_list	*temp = stack_a;
+	while (temp != NULL)
+    {
+        printf("%d <-> ", temp->content);
+        temp = temp->next;
+    }
+    printf("NULL\n");
 	return (free_list(stack_a), 0);
 }
 
