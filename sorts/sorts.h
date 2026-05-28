@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/27 16:13:55 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:35:02 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,12 @@ typedef struct s_list
 
 }					t_list;
 
-//main
 int		flags(char *argv);
 int		isnum(char *argv);
+int		ft_lstsize(t_list *lst);
 int		ft_atoi(const char *nptr);
 int		parser(int argc, char **argv);
 int		loop(int i, int argc, char **argv);
-
-//stack functions
-
-//lists
-int		ft_lstsize(t_list *lst);
 
 void	free_list(t_list *head);
 void	ft_lstiter(t_list *lst, void (*f)(int));
@@ -46,6 +41,18 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(int));
 void	ft_lstclear(t_list **lst, void (*del)(int));
+
+void	sa(t_list *stack_a);
+void	sb(t_list *stack_b);
+void	ra(t_list **stack_a);
+void	rb(t_list **stack_b);
+void	rra(t_list **stack_a);
+void	rrb(t_list **stack_b);
+void	ss(t_list *stack_a, t_list *stack_b);
+void	pa(t_list **stack_b, t_list **stack_a);
+void	pb(t_list **stack_b, t_list **stack_a);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
 
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);

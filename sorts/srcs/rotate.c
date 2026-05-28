@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:50:05 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/28 10:23:26 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:10:14 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	rb(t_list **stack_b)
 	(*stack_b) = tail;
 }
 
-void	rr(t_list *stack_a, t_list *stack_b)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
-	ra(&stack_a);
-	rb(&stack_b);
+	ra(stack_a);
+	rb(stack_b);
 }

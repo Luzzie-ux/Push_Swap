@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/28 11:45:09 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:36:18 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	parser(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	int		check;
-	int		strat;
 	int		bench;
 	t_list	*stack_a;
 	
@@ -70,15 +69,16 @@ int	main(int argc, char **argv)
 	if (check == -1)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
 	bench = check % 10;
-	strat = (check / 10) % 10;
 	stack_a = extension(check, argc, argv);
 	t_list	*temp = stack_a;
 	while (temp != NULL)
-    {
-        printf("%d <-> ", temp->content);
-        temp = temp->next;
-    }
-    printf("NULL\n");
+	{
+		ft_printf("%d <-> ", temp->content);
+		temp = temp->next;
+	}
+	ft_printf("NULL\n");
+	/* execute((check / 10) % 10, stack_a); 
+	benchmark(check % 10, stack_a);*/
 	return (free_list(stack_a), 0);
 }
 
@@ -104,3 +104,4 @@ t_list	*extension(int check, int argc, char **argv)
 	ft_printf("stack_a size: %d\n", ft_lstsize(stack_a));
 	return (free(array), stack_a);
 }
+
