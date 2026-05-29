@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/28 12:36:18 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/05/29 16:20:57 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,18 @@ int	parser(int argc, char **argv)
 	return (result);
 }
 
+//int strat = (check / 10) % 10
+// bench = check % 10;
 int	main(int argc, char **argv)
 {
 	int		check;
-	int		bench;
 	t_list	*stack_a;
-	
 
 	if (argc <= 3)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
 	check = parser(argc, argv);
 	if (check == -1)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
-	bench = check % 10;
 	stack_a = extension(check, argc, argv);
 	t_list	*temp = stack_a;
 	while (temp != NULL)
