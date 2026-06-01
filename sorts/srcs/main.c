@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/29 16:20:57 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:00:58 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	parser(int argc, char **argv)
 	return (result);
 }
 
-//int strat = (check / 10) % 10
-// bench = check % 10;
+//int strat = (check / 10) % 10;
+//int bench = check % 10;
 int	main(int argc, char **argv)
 {
 	int		check;
@@ -76,8 +76,8 @@ int	main(int argc, char **argv)
 		temp = temp->next;
 	}
 	ft_printf("NULL\n");
-	/* execute((check / 10) % 10, stack_a); 
-	benchmark(check % 10, stack_a);*/
+	/*benchmark(check % 10, stack_a); 
+	execute((check / 10) % 10, stack_a);*/
 	return (free_list(stack_a), 0);
 }
 

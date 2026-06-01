@@ -6,13 +6,13 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:05:23 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/01 18:38:14 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:00:00 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sorts.h"
 
-/* 
+/*
 void	execute(int strat, t_list *stack)
 {
 	int	i;
@@ -29,36 +29,38 @@ void	execute(int strat, t_list *stack)
 	else
 		return ;
 } */
-/* 
-int	benchmark(int bench, t_list stack) 
-{
-	int i = 0
-	if (bench != 1)
-		return (0);
-	i = function compute_disorder(stack)
-	return (i);
-} */
-/* 
-int	compute_disorder(t_list stack_a)
+/*
+int	compute_disorder(t_list *a)
 {
 	int	total_pairs;
 	int	mistakes;
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	mistakes = 0;
 	total_pairs = 0;
-	while (i <  ft_lstsize(stack_a) - 1)
+	while (i <  ft_lstsize(a) - 1)
 	{
 		j = i + 1;
-		while (j < ft_lstsize(stack_a) - 1)
+		while (j < ft_lstsize(a) - 1)
 		{
-			total_pairs += 1
-			if a[i] > a[j]
-				mistakes += 1
+			total_pairs += 1;
+			if (a->content > a->next->content)
+				mistakes += 1;
+			j++;
 		}
+		i++;
 	}
-	return (mistakes / total_pairs); 
+	return (mistakes / total_pairs);
+}
+
+int	benchmark(int bench, t_list *stack)
+{
+	int	i = 0;
+	if (bench != 1)
+		return (0);
+	i = compute_disorder(stack);
+	return (i);
 }
 */
