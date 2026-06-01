@@ -6,31 +6,32 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:05:23 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/01 20:00:00 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:35:12 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sorts.h"
 
 /*
-void	execute(int strat, t_list *stack)
+t_list	*execute(int strat, int bench, float d, t_list *stack)
 {
 	int	i;
 	int	j;
 
 	if (strat == 0)
-		simple(stack);
+		count = simple(stack);
 	else if (strat == 1)
-		medium(stack);
+		count = medium(stack);
 	else if (strat == 2)
-		complex(stack);
+		count = complex(stack);
 	else if (strat == 3)
-		adaptative(stack);
-	else
-		return ;
+		count = adaptative(stack);
+	else if (bench == 1)
+		return (benchmark(strat, d, count, stack_a))
+	return (stack);
 } */
 /*
-int	compute_disorder(t_list *a)
+float	compute_disorder(t_list *a)
 {
 	int	total_pairs;
 	int	mistakes;
@@ -55,12 +56,24 @@ int	compute_disorder(t_list *a)
 	return (mistakes / total_pairs);
 }
 
-int	benchmark(int bench, t_list *stack)
+int	benchmark(int strat, int d, int count, t_list *stack)
 {
-	int	i = 0;
-	if (bench != 1)
-		return (0);
-	i = compute_disorder(stack);
-	return (i);
+	int total_ops;
+	char *disorder; 
+	
+	disorder = itoa((d * 100) / 1);
+	total_ops = count;
+	ft_putstr_fd("[bench] disorder: %", 2);
+	ft_putstr_fd(dis, 2);
+	if (strat == 0)
+		ft_putstr("[bench] strategy: simple / O(nˆ2)", 2);
+	else if (strat == 1)
+		ft_putstr("[bench] strategy: medium / O(nVn)", 2);
+	else if (strat == 2)
+		ft_putstr("[bench] strategy: complex / O(n log n)", 2);
+	else if (strat == 3)
+		ft_putstr("[bench] strategy: adaptive / O(1)", 2);
+	ft_putstr_fd("[bench] total_ops: ", 2);
+	ft_putstr_fd(total_ops, 2);
 }
 */
