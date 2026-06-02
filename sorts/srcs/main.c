@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/02 13:41:42 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/02 13:45:44 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 {
 	int		check;
 	t_list	*stack_a;
+	t_list	*temp;
 	/* float	d; */
 
 	if (argc <= 3)
@@ -70,7 +71,7 @@ int	main(int argc, char **argv)
 	if (check == -1)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
 	stack_a = extension(check, argc, argv);
-	t_list	*temp = stack_a;
+	temp = stack_a;
 	while (temp != NULL)
 	{
 		ft_printf("%d <-> ", temp->content);
@@ -105,4 +106,3 @@ t_list	*extension(int check, int argc, char **argv)
 	ft_printf("stack_a size: %d\n", ft_lstsize(stack_a));
 	return (free(array), stack_a);
 }
-

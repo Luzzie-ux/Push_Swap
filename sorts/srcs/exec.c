@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:05:23 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/02 11:42:38 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/02 13:42:57 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ float	compute_disorder(t_list *a)
 	float	mistakes;
 	t_list	*tmp1;
 	t_list	*tmp2;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	mistakes = 0;
