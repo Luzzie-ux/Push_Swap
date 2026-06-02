@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:05:23 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/01 20:35:12 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:42:38 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 /*
 t_list	*execute(int strat, int bench, float d, t_list *stack)
 {
+	int	count;
 	int	i;
 	int	j;
 
+	count = 0;
 	if (strat == 0)
 		count = simple(stack);
 	else if (strat == 1)
@@ -30,32 +32,38 @@ t_list	*execute(int strat, int bench, float d, t_list *stack)
 		return (benchmark(strat, d, count, stack_a))
 	return (stack);
 } */
-/*
+
 float	compute_disorder(t_list *a)
 {
-	int	total_pairs;
-	int	mistakes;
+	float	total_pairs;
+	float	mistakes;
+	t_list	*tmp1;
+	t_list	*tmp2;
 	int	i;
 	int	j;
 
 	i = 0;
 	mistakes = 0;
 	total_pairs = 0;
-	while (i <  ft_lstsize(a) - 1)
+	tmp1 = a;
+	while (i <  ft_lstsize(a))
 	{
+		tmp2 = tmp1->next;
 		j = i + 1;
-		while (j < ft_lstsize(a) - 1)
+		while (j < ft_lstsize(a))
 		{
 			total_pairs += 1;
-			if (a->content > a->next->content)
+			if (tmp1->content > tmp2->content)
 				mistakes += 1;
+			tmp2 = tmp2->next;
 			j++;
 		}
+		tmp1 = tmp1->next;
 		i++;
 	}
 	return (mistakes / total_pairs);
 }
-
+/*
 int	benchmark(int strat, int d, int count, t_list *stack)
 {
 	int total_ops;
@@ -63,8 +71,9 @@ int	benchmark(int strat, int d, int count, t_list *stack)
 	
 	disorder = itoa((d * 100) / 1);
 	total_ops = count;
-	ft_putstr_fd("[bench] disorder: %", 2);
+	ft_putstr_fd("[bench] disorder: ", 2);
 	ft_putstr_fd(dis, 2);
+	ft_putchar_fd('%',2);
 	if (strat == 0)
 		ft_putstr("[bench] strategy: simple / O(nˆ2)", 2);
 	else if (strat == 1)

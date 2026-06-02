@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/01 20:09:16 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:20:25 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		flags(char *argv);
 int		isnum(char *argv);
 int		ft_lstsize(t_list *lst);
 int		ft_atoi(const char *nptr);
-int		compute_disorder(t_list *a);
+float		compute_disorder(t_list *a);
 int		parser(int argc, char **argv);
 int		loop(int i, int argc, char **argv);
 

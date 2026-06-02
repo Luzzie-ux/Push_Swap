@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/01 20:26:31 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:42:57 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	float	d;
 
-	if (argc <= 3)
-		return (ft_putstr_fd("ERROR\n", 2), 0);
+	/* if (argc <= 3)
+		return (ft_putstr_fd("ERROR\n", 2), 0); */
 	check = parser(argc, argv);
 	if (check == -1)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
@@ -77,8 +77,8 @@ int	main(int argc, char **argv)
 		temp = temp->next;
 	}
 	ft_printf("NULL\n");
-	/*d = compute_disorder(stack_a);
-	execute((check / 10) % 10, check % 10, d, stack_a);*/
+	/* d = compute_disorder(stack_a); */
+	/*execute((check / 10) % 10, check % 10, d, stack_a);*/
 	return (free_list(stack_a), 0);
 }
 
