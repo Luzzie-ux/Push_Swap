@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:41:38 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/27 16:50:52 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/04 19:12:50 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,11 @@ t_list	*create_list(int *arr, int size)
 	tail = NULL;
 	while (i < size)
 	{
-		new_node = malloc(sizeof(t_list));
-		if (!new_node)
-			return (free_list(head), NULL);
-		new_node->content = arr[i++];
-		new_node->next = NULL;
+		new_node = ft_lstnew(arr[i++]);
 		if (!head)
 			head = new_node;
 		else
-		{
-			tail->next = new_node;
-			tail->next->prev = tail;
-		}
+			ft_lstadd_back(&tail, new_node);
 		tail = new_node;
 	}
 	return (head);

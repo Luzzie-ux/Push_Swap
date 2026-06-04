@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 16:54:22 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/27 14:04:18 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:55:54 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while ((*walker).next)
 		walker = (*walker).next;
 	walker->next = new;
+	walker->next->prev = walker;
 }

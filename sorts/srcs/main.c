@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/02 13:45:44 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/04 19:20:49 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 	temp = stack_a;
 	while (temp != NULL)
 	{
-		ft_printf("%d <-> ", temp->content);
+		ft_printf("%d [%d]\n", temp->content, temp->rank);
 		temp = temp->next;
 	}
 	ft_printf("NULL\n");

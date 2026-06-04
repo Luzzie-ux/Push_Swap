@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:43:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/02 11:20:25 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:50:11 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 	int				content;
 	struct s_list	*prev;
 	struct s_list	*next;
+	int				rank;
 
 }					t_list;
 
