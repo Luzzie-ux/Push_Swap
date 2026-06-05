@@ -2,4 +2,4 @@ a.out
 *.a
 *.o
 push_swap
-test/
+test/a.out
