@@ -5,35 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/22 13:48:25 by rodrpere          #+#    #+#              #
-#    Updated: 2026/05/22 16:38:20 by rodrpere         ###   ########.fr        #
+#    Created: 2026/05/24 16:58:50 by rodrpere          #+#    #+#              #
+#    Updated: 2026/06/05 09:39:34 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = swap.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I inc/
-SRCS = $(wildcard srcs/*.c)
-OBJS = $(SRCS:.c=.o)
-MAIN = main.c
+NAME= push_swap
+CC= cc
+CFLAGS= -Wall -Wextra -Werror -g
+SRCS= $(wildcard srcs/*.c) $(wildcard lists/*.c) $(wildcard algo/*.c)
+LIBFT= Libft/libft.a
+OBJS= $(SRCS:.c=.o)
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(LIBFT):
+	make -C Libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -L Libft -lft -o $(NAME)
+
 clean:
+	make -C Libft clean
 	rm -f $(OBJS)
 
 fclean: clean
+	make -C Libft fclean
 	rm -f $(NAME)
 
 re: fclean all
 
-test: re
-	$(CC) $(CFLAGS) $(MAIN) $(NAME)
-
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re

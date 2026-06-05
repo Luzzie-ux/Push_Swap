@@ -6,32 +6,29 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:05:23 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/02 13:42:57 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/05 09:38:38 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sorts.h"
 
-/*
 t_list	*execute(int strat, int bench, float d, t_list *stack)
 {
-	int	count;
-	int	i;
-	int	j;
 
-	count = 0;
+	(void)bench;
+	(void)d;
 	if (strat == 0)
-		count = simple(stack);
-	else if (strat == 1)
+		simple(stack);
+	/* else if (strat == 1)
 		count = medium(stack);
 	else if (strat == 2)
 		count = complex(stack);
 	else if (strat == 3)
 		count = adaptative(stack);
 	else if (bench == 1)
-		return (benchmark(strat, d, count, stack_a))
+		return (benchmark(strat, d, count, stack)); */
 	return (stack);
-} */
+}
 
 float	compute_disorder(t_list *a)
 {
@@ -48,8 +45,8 @@ float	compute_disorder(t_list *a)
 	tmp1 = a;
 	while (i <  ft_lstsize(a))
 	{
-		tmp2 = tmp1->next;
 		j = i + 1;
+		tmp2 = tmp1->next;
 		while (j < ft_lstsize(a))
 		{
 			total_pairs += 1;
@@ -63,7 +60,7 @@ float	compute_disorder(t_list *a)
 	}
 	return (mistakes / total_pairs);
 }
-/*
+/* 
 int	benchmark(int strat, int d, int count, t_list *stack)
 {
 	int total_ops;
@@ -85,4 +82,4 @@ int	benchmark(int strat, int d, int count, t_list *stack)
 	ft_putstr_fd("[bench] total_ops: ", 2);
 	ft_putstr_fd(total_ops, 2);
 }
-*/
+ */

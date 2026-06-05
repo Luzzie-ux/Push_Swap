@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:03:43 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/04 19:20:49 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/05 09:54:17 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	int		check;
 	t_list	*stack_a;
 	t_list	*temp;
-	/* float	d; */
+	float	d;
 
 	if (argc <= 3)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
@@ -71,16 +71,16 @@ int	main(int argc, char **argv)
 	if (check == -1)
 		return (ft_putstr_fd("ERROR\n", 2), 0);
 	stack_a = extension(check, argc, argv);
+	d = compute_disorder(stack_a);
+	/* printf("%.2f%%\n", ((d * 100) / 1)); */
+	execute((check / 10) % 10, check % 10, d, stack_a);
 	temp = stack_a;
 	while (temp != NULL)
 	{
-		ft_printf("%d [%d]\n", temp->content, temp->rank);
+		ft_printf("%d [%d] <-> ", temp->content, temp->rank);
 		temp = temp->next;
 	}
 	ft_printf("NULL\n");
-	/*d = compute_disorder(stack_a);
-	printf("%.2f%%\n", ((d * 100) / 1));*/
-	/*execute((check / 10) % 10, check % 10, d, stack_a);*/
 	return (free_list(stack_a), 0);
 }
 
@@ -99,7 +99,7 @@ t_list	*extension(int check, int argc, char **argv)
 	while (i < ((argc - 1 - skip)))
 	{
 		array[i] = ft_atoi(argv[i + 1 + skip]);
-		ft_printf("stack_a[%d]=%d\n", i, array[i]);
+		/* ft_printf("stack_a[%d]=%d\n", i, array[i]); */
 		i++;
 	}
 	stack_a = create_list(array, argc - 1 - skip);
