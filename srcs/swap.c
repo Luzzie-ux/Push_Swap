@@ -6,41 +6,55 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:49:07 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/28 12:12:22 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:27:11 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sorts.h"
 
-void	sa(t_list *stack_a)
+void	sa(t_list **stack_a)
 {
-	long		temp;
+	t_list	*head;
+	t_list	*second;
+	t_list	*tail;
 
-	if (ft_lstsize(stack_a) < 2)
-		return ;
-	else
-	{
-		temp = stack_a->content;
-		stack_a->content = stack_a->next->content;
-		stack_a->next->content = temp;
-	}
+	if (ft_lstsize(*stack_a) < 2)
+		return;
+	head = (*stack_a);
+	second = head->next;
+	tail = second->next;
+
+	(*stack_a) = second;
+	second->prev = NULL;
+	second->next = head;
+	head->prev = second;
+	head->next = tail;
+	if (tail)
+		tail->prev = head;
 }
 
-void	sb(t_list *stack_b)
+void	sb(t_list **stack_a)
 {
-	int		temp;
+	t_list	*head;
+	t_list	*second;
+	t_list	*tail;
 
-	if (ft_lstsize(stack_b) < 2)
-		return ;
-	else
-	{
-		temp = stack_b->content;
-		stack_b->content = stack_b->next->content;
-		stack_b->next->content = temp;
-	}
+	if (ft_lstsize(*stack_a) < 2)
+		return;
+	head = (*stack_a);
+	second = head->next;
+	tail = second->next;
+
+	(*stack_a) = second;
+	second->prev = NULL;
+	second->next = head;
+	head->prev = second;
+	head->next = tail;
+	if (tail)
+		tail->prev = head;
 }
 
-void	ss(t_list *stack_a, t_list *stack_b)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
