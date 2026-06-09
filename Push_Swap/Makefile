@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/08 15:39:20 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/09 17:00:12 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT = libft/libft.a
 FT_PRINTF = ft_printf/libftprintf.a
 SRCS = 	lists/create_list.c lists/lists_fts.c \
 		methods/push.c methods/rrotate.c methods/rotate.c methods/swap.c \
-		parsers/ \
+		parsers/validate.c \
 		algos/ \
 		main.c 
 OBJS = (SRCS=.c:.o)

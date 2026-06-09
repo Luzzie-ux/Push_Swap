@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:48:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/08 15:49:29 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 09:51:31 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int		ft_atoi(const char *nptr);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
+size_t	ft_strlen(const char *s);
+
 void	ft_putchar_fd(char c, int fd);
 
 void	ft_putstr_fd(char *s, int fd);
+
+void	*ft_calloc(size_t nmemb, size_t size);
+
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

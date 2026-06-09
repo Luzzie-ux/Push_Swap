@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/08 15:49:58 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:34:18 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,28 @@ typedef enum e_strat
 	COMPLEX,
 	ADAPTATIVE,
 	ERROR
-} 	t_strat;
+}	t_strat;
 
+typedef struct s_flags
+{
+	t_strat		flag_name;
+	int			bench;
+	int			advance;
+	int			*numbers;
+	float		disorder;
+}	t_flags;
+
+char	*ft_gets(char **args);
 
 int		ft_lstsize(t_list *lst);
 
 void	free_list(t_list *head);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
+
+void	validate_flags(char **arg, t_flags **flag);
+void	validate_nums(char **num, int index, t_flags **flags);
+void	validate_args(int argc, char **args, t_flags **flags);
 
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
@@ -57,5 +71,6 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*create_list(int *arr, int size);
+
 
 #endif
