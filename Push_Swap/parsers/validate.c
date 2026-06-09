@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 18:36:28 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:48:23 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,25 @@ static void validate_flags(char **arg, t_flags **flag)
 void	validate_nums(char **num, int index, t_flags **flags)
 {
 	int		i;
-	char	*result;
+	int		j;
 	char 	**copy;
 
 	i = index;
-	if (!num)
+	j = 0;
+	if (!num || !*num)
 		(*flags)->flag_name = ERROR;
-	while (i)
+	if (num[i] && !num[i + 1])
+		copy = ft_split(*num, ' ');
+	else
+		copy = num;
+	while (copy[i])
+		i++;
+	(*flags)->numbers = malloc(i * sizeof(int));
+	while (copy[j])
 	{
-		
+		(*flags)->numbers[j] = ft_atoi(copy[j]);
+		j++;
 	}
-	result = ft_gets(num);
-	copy = ft_split(result, ' ');
-	
 }
 
 static int	phrase_len(char **s)
