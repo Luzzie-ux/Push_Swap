@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:48:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 09:51:31 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:52:20 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+char	*ft_gets(char **args);
 
 char	**ft_split(char const *s, char c);
 

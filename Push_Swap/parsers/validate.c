@@ -6,33 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 18:48:23 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:51:15 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
-
-char	*ft_gets(char **args)
-{
-	char		*result;
-	size_t		size;
-	int			i;
-
-	i = 0;
-	if (!*args || !args)
-		return (NULL);
-	while (args[i])
-	{
-		size = ft_strlen(args[i + 1]);
-		result = (char *)malloc(size + 1 * sizeof(char));
-		if (!result)
-			return (NULL);
-		result = ft_memcpy(result, args[i + 1], size);
-		result[size] = '\0';
-		i++;
-	}
-	return (result);
-}
 
 void	validate_args(int argc, char **args, t_flags **flags)
 {
@@ -99,16 +77,3 @@ void	validate_nums(char **num, int index, t_flags **flags)
 		j++;
 	}
 }
-
-static int	phrase_len(char **s)
-{
-	int	i;
-
-	i = 0;
-	if (!*s || !s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-

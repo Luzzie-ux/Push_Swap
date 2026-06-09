@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 18:34:18 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:51:56 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ typedef struct s_flags
 	int			*numbers;
 	float		disorder;
 }	t_flags;
-
-char	*ft_gets(char **args);
 
 int		ft_lstsize(t_list *lst);
 
