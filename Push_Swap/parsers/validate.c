@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 15:38:10 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:06:03 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*validate_nums(char **num, int index, t_flags *flags)
 		return ((*flags).flag_name = ERROR, free_split(copy));
 	(*flags).nsize = index - (*flags).advance;
 	if (check_errors(flags, copy, did_split))
-		return (NULL);
+		return (free((*flags).numbers), NULL);
 	if (did_split == 1)
 		free_split(copy);
 	return (NULL);

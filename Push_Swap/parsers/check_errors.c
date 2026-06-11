@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 16:58:52 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:13:37 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	i = 0;
 	while (copy[i])
 	{
-		if (copy[i] == copy[i + 1])
-			return (flags->flag_name = ERROR, 1);
+		if ((copy)[i] == (copy)[i + 1])
+			flags->flag_name = ERROR;
 		check_for_duple(copy[i], flags);
 		check_for_letters(copy[i], flags);
 		check_for_signs(copy[i], flags);
 		i++;
 	}
-	if (flags->flag_name == ERROR)
-		return (1);
-	else if (check == 1 && flags->flag_name == ERROR)
+	if (check == 1 && flags->flag_name == ERROR)
 		return (free_split(copy), 1);
+	else if (flags->flag_name == ERROR)
+		return (1);
 	j = 0;
 	while (copy[j])
 	{
