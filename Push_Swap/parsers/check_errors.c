@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 17:13:37 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:22:45 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	i = 0;
 	while (copy[i])
 	{
-		if ((copy)[i] == (copy)[i + 1])
+		if (!(ft_strcmp(copy[i], copy[i + 1])))
 			flags->flag_name = ERROR;
 		check_for_duple(copy[i], flags);
 		check_for_letters(copy[i], flags);

@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/11 15:37:05 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/11 17:24:20 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ clean:
 	rm -fr $(OBJS)
 
 fclean: clean
+	$(MAKE) -C libft/ fclean
+	$(MAKE) -C ft_printf/ fclean
 	rm -fr $(NAME)
 
 re: fclean all
