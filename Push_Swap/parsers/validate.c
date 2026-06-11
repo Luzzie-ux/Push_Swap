@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 14:37:30 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:50:34 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	validate_args(char **args, t_flags *flags)
 	(*flags).advance = 0;
 	(*flags).bench = 0;
 	(*flags).flag_name = ADAPTATIVE;
-	if (*args[0] == '-' && *args[1] == '-')
+	if ((*args)[0] == '-' && (*args)[1] == '-')
 		validate_flags(args, flags);
 	if ((*flags).flag_name == ERROR)
 		return ;
