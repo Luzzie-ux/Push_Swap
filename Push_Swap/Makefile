@@ -6,35 +6,42 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/09 17:00:12 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/11 12:06:57 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror -g
+
+INCLUDES = -Iincs -Ilibft -Ift_printf
+
 LIBFT = libft/libft.a
+
 FT_PRINTF = ft_printf/libftprintf.a
+
 SRCS = 	lists/create_list.c lists/lists_fts.c \
 		methods/push.c methods/rrotate.c methods/rotate.c methods/swap.c \
-		parsers/validate.c \
-		algos/ \
-		main.c 
-OBJS = (SRCS=.c:.o)
+		parsers/validate.c parsers/free_split.c \
+		main.c
 
-all: $(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(LIBFT): 
-	make -C libft/
+all: $(LIBFT) $(FT_PRINTF) $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C libft/
 
 $(FT_PRINTF):
-	make -C ft_printf/
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(MAKE) -C ft_printf/
 
 $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(MAKE) -C libft/ clean

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gets.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 18:51:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 11:02:49 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/04/16 11:51:17 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/04/21 12:19:54 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_gets(char **args)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	char		*result;
-	size_t		size;
-	int			i;
+	unsigned char	*p;
 
-	i = 0;
-	if (!*args || !args)
-		return (NULL);
-	while (args[i])
+	p = (unsigned char *)s;
+	while (n > 0)
 	{
-		size = ft_strlen(args[i + 1]);
-		result = (char *)malloc(size + 1 * sizeof(char));
-		if (!result)
-			return (NULL);
-		result = ft_memcpy(result, args[i + 1], size);
-		result[size] = '\0';
-		i++;
+		*p = c;
+		p++;
+		n--;
 	}
-	return (result);
+	return (s);
 }

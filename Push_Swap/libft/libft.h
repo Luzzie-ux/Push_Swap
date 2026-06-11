@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:48:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 18:52:20 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 10:44:43 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	*ft_calloc(size_t nmemb, size_t size);
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif

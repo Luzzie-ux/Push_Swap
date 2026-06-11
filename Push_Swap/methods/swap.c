@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:49:07 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/08 13:29:21 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 11:03:31 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ void	sa(t_list **stack_a)
 	t_list	*tail;
 
 	if (ft_lstsize(*stack_a) < 2)
-		return;
+		return ;
 	head = (*stack_a);
 	second = head->next;
 	tail = second->next;
-
 	(*stack_a) = second;
 	second->prev = NULL;
 	second->next = head;
@@ -40,11 +39,10 @@ void	sb(t_list **stack_a)
 	t_list	*tail;
 
 	if (ft_lstsize(*stack_a) < 2)
-		return;
+		return ;
 	head = (*stack_a);
 	second = head->next;
 	tail = second->next;
-
 	(*stack_a) = second;
 	second->prev = NULL;
 	second->next = head;

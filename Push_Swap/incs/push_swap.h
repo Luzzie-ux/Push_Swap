@@ -6,12 +6,12 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/09 18:51:56 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:11:09 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#	define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,8 +22,8 @@ typedef struct s_list
 {
 	int				data;
 	int				rank;
-	struct s_list 	*next;
-	struct s_list 	*prev;
+	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
 typedef enum e_strat
@@ -41,6 +41,7 @@ typedef struct s_flags
 	int			bench;
 	int			advance;
 	int			*numbers;
+	int			nsize;
 	float		disorder;
 }	t_flags;
 
@@ -50,9 +51,12 @@ void	free_list(t_list *head);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 
-void	validate_flags(char **arg, t_flags **flag);
-void	validate_nums(char **num, int index, t_flags **flags);
-void	validate_args(int argc, char **args, t_flags **flags);
+void	validate_flags(char **arg, t_flags *flag);
+void	*validate_nums(char **num, int index, t_flags *flags);
+void	validate_args(char **args, t_flags *flags);
+
+void	*free_split(char **string);
+void	check_errors(t_flags *flags, char **copy);
 
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
@@ -69,6 +73,5 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*create_list(int *arr, int size);
-
 
 #endif
