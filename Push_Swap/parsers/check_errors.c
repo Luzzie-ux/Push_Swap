@@ -6,15 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 15:40:18 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:58:52 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
-
-static int check_for_duple();
-static int check_for_letters();
-static int check_for_signs();
 
 int	check_errors(t_flags *flags, char **copy, int check)
 {
@@ -24,19 +20,18 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	i = 0;
 	while (copy[i])
 	{
-		j = 0;
-		while (copy[i][j])
-		{
-			if (copy[i][j] >= 'A' && copy[i][j] <= 'z')
-				flags->flag_name = ERROR;
-			j++;
-		}
+		if (copy[i] == copy[i + 1])
+			return (flags->flag_name = ERROR, 1);
+		check_for_duple(copy[i], flags);
+		check_for_letters(copy[i], flags);
+		check_for_signs(copy[i], flags);
 		i++;
 	}
 	if (flags->flag_name == ERROR)
 		return (1);
 	else if (check == 1 && flags->flag_name == ERROR)
 		return (free_split(copy), 1);
+	j = 0;
 	while (copy[j])
 	{
 		(*flags).numbers[j] = ft_atoi(copy[j]);
@@ -45,15 +40,39 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	return (0);
 }
 
-static int check_for_duple()
+void check_for_duple(char *copy, t_flags *flags)
 {
-	;
+	int	i;
+
+	i = 0;
+	while (copy[i])
+	{
+		if (copy[i] == copy[i + 1])
+			flags->flag_name = ERROR;
+		i++;
+	}
 }
-static int check_for_letters()
+void check_for_letters(char *copy, t_flags *flags)
 {
-	;
+	int	i;
+
+	i = 0;
+	while (copy[i])
+	{
+		if (copy[i] >= 'A' && copy[i] <= 'z')
+			flags->flag_name = ERROR;
+		i++;
+	}
 }
-static int check_for_signs()
+void check_for_signs(char *copy, t_flags *flags)
 {
-	;
+	int	i;
+
+	i = 0;
+	while (copy[i])
+	{
+		if (copy[i] >= '!' && copy[i] <= '*')
+			flags->flag_name = ERROR;
+		i++;
+	}
 }
