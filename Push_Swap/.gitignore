@@ -1,0 +1,13 @@
+a.out
+push_swap
+ft_printf/*.o
+ft_printf/*.a
+ft_printf/*.gch
+libft/*.o
+libft/*.a
+libft/*.gch
+lists/*.o
+parsers/.o
+methods/*.o
+algos/*.o
+incs/*.gch
