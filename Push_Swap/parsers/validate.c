@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 15:00:40 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:38:10 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	validate_args(char **args, t_flags *flags)
 	if ((*flags).flag_name == ERROR)
 		return ;
 	validate_nums(args, (*flags).advance, flags);
+	if ((*flags).flag_name == ERROR)
+		return ;
 }
 
 void	validate_flags(char **arg, t_flags *flag)
@@ -46,7 +48,7 @@ void	validate_flags(char **arg, t_flags *flag)
 		i++;
 	}
 	if (arg[i] == NULL)
-	 	(*flag).flag_name = ERROR;
+		(*flag).flag_name = ERROR;
 	(*flag).advance += i;
 }
 
@@ -56,8 +58,6 @@ void	*validate_nums(char **num, int index, t_flags *flags)
 	int		did_split;
 
 	did_split = 0;
-	// if (!num[index])
-	// 	return ((*flags).flag_name = ERROR, NULL);
 	if (num[index] && !num[index + 1])
 	{
 		copy = ft_split(num[index], ' ');
@@ -71,36 +71,9 @@ void	*validate_nums(char **num, int index, t_flags *flags)
 	if (!(*flags).numbers)
 		return ((*flags).flag_name = ERROR, free_split(copy));
 	(*flags).nsize = index - (*flags).advance;
-	check_errors(flags, copy);
+	if (check_errors(flags, copy, did_split))
+		return (NULL);
 	if (did_split == 1)
 		free_split(copy);
 	return (NULL);
 }
-
-void	check_errors(t_flags *flags, char **copy)
-{
-	int j;
-
-	j = 0;
-	while (copy[j])
-	{
-		(*flags).numbers[j] = ft_atoi(copy[j]);
-		j++;
-	}
-	return ;
-}
-/*
-
-(*flags)->numbers[j] = ft_atoi(copy[j]);
-
-copy = num
-if (copy[index] && !copy[index + 1])
-	copy = ft_split(copy[index], ' ');
-
-
-	how do I make sure there is no letters inside copy if I cant see one argument at a time
-while (!(*copy[n] >= 'A' && *copy[n] <= 'z'))
-	n++;
-
-
-*/

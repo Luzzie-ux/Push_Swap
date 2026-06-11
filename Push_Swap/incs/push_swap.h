@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 14:11:09 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:22:53 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*validate_nums(char **num, int index, t_flags *flags);
 void	validate_args(char **args, t_flags *flags);
 
 void	*free_split(char **string);
-void	check_errors(t_flags *flags, char **copy);
+int		check_errors(t_flags *flags, char **copy, int check);
 
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);
