@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 14:50:34 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:00:40 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	validate_flags(char **arg, t_flags *flag)
 			(*flag).flag_name = ERROR;
 		i++;
 	}
+	if (arg[i] == NULL)
+	 	(*flag).flag_name = ERROR;
 	(*flag).advance += i;
 }
 
@@ -54,8 +56,8 @@ void	*validate_nums(char **num, int index, t_flags *flags)
 	int		did_split;
 
 	did_split = 0;
-	if (!num[index])
-		return ((*flags).flag_name = ERROR, NULL);
+	// if (!num[index])
+	// 	return ((*flags).flag_name = ERROR, NULL);
 	if (num[index] && !num[index + 1])
 	{
 		copy = ft_split(num[index], ' ');
@@ -82,7 +84,7 @@ void	check_errors(t_flags *flags, char **copy)
 	j = 0;
 	while (copy[j])
 	{
-		(*flags).numbers[j] = *copy[j];
+		(*flags).numbers[j] = ft_atoi(copy[j]);
 		j++;
 	}
 	return ;
