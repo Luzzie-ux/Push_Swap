@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/11 17:24:20 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/12 21:47:14 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ LIBFT = libft/libft.a
 FT_PRINTF = ft_printf/libftprintf.a
 
 SRCS = 	lists/create_list.c lists/lists_fts.c \
-		methods/push.c methods/rrotate.c methods/rotate.c methods/swap.c \
-		parsers/validate.c parsers/free_split.c parsers/check_errors.c\
+		methods/push.c methods/rrotate.c methods/rotate.c methods/swap.c methods/disorder.c\
+		parsers/validate.c parsers/matrix.c parsers/check_errors.c\
 		main.c
 
 OBJS = $(SRCS:.c=.o)
