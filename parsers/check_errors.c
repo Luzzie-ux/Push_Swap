@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 10:01:00 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:28:16 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = flags->advance;
 	while (copy[i])
 	{
 		check_for_duple(copy, flags);
