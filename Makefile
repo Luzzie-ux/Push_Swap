@@ -5,36 +5,53 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/24 16:58:50 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/05 09:39:34 by rodrpere         ###   ########.fr        #
+#    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
+#    Updated: 2026/06/11 17:24:20 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= push_swap
-CC= cc
-CFLAGS= -Wall -Wextra -Werror -g
-SRCS= $(wildcard srcs/*.c) $(wildcard lists/*.c) $(wildcard algo/*.c)
-LIBFT= Libft/libft.a
-OBJS= $(SRCS:.c=.o)
+NAME = push_swap
 
-all: $(LIBFT) $(NAME)
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror -g
+
+INCLUDES = -Iincs -Ilibft -Ift_printf
+
+LIBFT = libft/libft.a
+
+FT_PRINTF = ft_printf/libftprintf.a
+
+SRCS = 	lists/create_list.c lists/lists_fts.c \
+		methods/push.c methods/rrotate.c methods/rotate.c methods/swap.c \
+		parsers/validate.c parsers/free_split.c parsers/check_errors.c\
+		main.c
+
+OBJS = $(SRCS:.c=.o)
+
+all: $(LIBFT) $(FT_PRINTF) $(NAME)
 
 $(LIBFT):
-	make -C Libft
+	$(MAKE) -C libft/
+
+$(FT_PRINTF):
+	$(MAKE) -C ft_printf/
+
+$(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L Libft -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	make -C Libft clean
-	rm -f $(OBJS)
+	$(MAKE) -C libft/ clean
+	$(MAKE) -C ft_printf/ clean
+	rm -fr $(OBJS)
 
 fclean: clean
-	make -C Libft fclean
-	rm -f $(NAME)
+	$(MAKE) -C libft/ fclean
+	$(MAKE) -C ft_printf/ fclean
+	rm -fr $(NAME)
 
 re: fclean all
 
