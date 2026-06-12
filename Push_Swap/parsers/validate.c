@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 17:06:03 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:00:28 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	validate_args(char **args, t_flags *flags)
 	validate_nums(args, (*flags).advance, flags);
 	if ((*flags).flag_name == ERROR)
 		return ;
+	compute_disorder(flags);
 }
 
 void	validate_flags(char **arg, t_flags *flag)
@@ -76,4 +77,31 @@ void	*validate_nums(char **num, int index, t_flags *flags)
 	if (did_split == 1)
 		free_split(copy);
 	return (NULL);
+}
+
+void	*compute_disorder(t_flags *array)
+{
+	int		i;
+	int		j;
+	float	mistakes;
+	float	total_pairs;
+
+	i = 0;
+	j = 0;
+	mistakes = 0;
+	total_pairs = 0;
+	array->disorder = 0;
+	while (i < array->nsize)
+	{
+		j = i + 1;
+		while (j < array->nsize)
+		{
+			total_pairs += 1;
+			if (array->numbers[i] > array->numbers[j])
+				mistakes += 1;
+			j++;
+		}
+		i++;
+	}
+	return (array->disorder = (mistakes / total_pairs), NULL);
 }

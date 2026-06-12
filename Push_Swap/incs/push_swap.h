@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 09:45:06 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:00:07 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_flags
 }	t_flags;
 
 int		ft_lstsize(t_list *lst);
+void	*compute_disorder(t_flags *array);
 
 void	free_list(t_list *head);
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -58,8 +59,8 @@ void	validate_args(char **args, t_flags *flags);
 void	*free_split(char **string);
 int		check_errors(t_flags *flags, char **copy, int check);
 void	*check_for_duple(char **copy, t_flags *flags);
-void 	*check_for_letters(char *copy, t_flags *flags);
-void 	*check_for_signs(char *copy, t_flags *flags);
+void	*check_for_letters(char *copy, t_flags *flags);
+void	*check_for_signs(char *copy, t_flags *flags);
 
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);

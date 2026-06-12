@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 09:44:31 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:01:00 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_errors(t_flags *flags, char **copy, int check)
 void	*check_for_duple(char **copy, t_flags *flags)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (copy[i])
@@ -71,6 +71,7 @@ void	*check_for_letters(char *copy, t_flags *flags)
 	}
 	return (NULL);
 }
+
 void	*check_for_signs(char *copy, t_flags *flags)
 {
 	int	i;
