@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:36:26 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 19:50:51 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:44:31 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,27 @@ int	check_errors(t_flags *flags, char **copy, int check)
 	return (0);
 }
 
-void	check_for_duple(char **copy, t_flags *flags)
+void	*check_for_duple(char **copy, t_flags *flags)
 {
 	int	i;
+	int j;
 
 	i = 0;
 	while (copy[i])
 	{
-		if (ft_strcmp(copy[i], copy[i + 1]) == 0)
-			flags->flag_name = ERROR;
+		j = i + 1;
+		while (copy[j])
+		{
+			if (ft_strcmp(copy[i], copy[j]) == 0)
+				return (flags->flag_name = ERROR, NULL);
+			j++;
+		}
 		i++;
 	}
+	return (NULL);
 }
-void	check_for_letters(char *copy, t_flags *flags)
+
+void	*check_for_letters(char *copy, t_flags *flags)
 {
 	int	i;
 
@@ -58,19 +66,23 @@ void	check_for_letters(char *copy, t_flags *flags)
 	while (copy[i])
 	{
 		if (copy[i] >= 'A' && copy[i] <= 'z')
-			flags->flag_name = ERROR;
+			return (flags->flag_name = ERROR, NULL);
 		i++;
 	}
+	return (NULL);
 }
-void	check_for_signs(char *copy, t_flags *flags)
+void	*check_for_signs(char *copy, t_flags *flags)
 {
 	int	i;
 
 	i = 0;
 	while (copy[i])
 	{
+		if (copy[i + 1] == 0 && (copy[i] == '-' || copy[i] == '+'))
+			flags->flag_name = ERROR;
 		if (copy[i] >= '!' && copy[i] <= '*')
 			flags->flag_name = ERROR;
 		i++;
 	}
+	return (NULL);
 }
