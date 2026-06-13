@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:01:34 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:11:47 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
@@ -33,7 +34,7 @@ typedef enum e_strat
 	COMPLEX,
 	ADAPTATIVE,
 	ERROR
-} t_strat;
+}	t_strat;
 
 typedef struct s_flags
 {

@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 09:06:02 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 18:13:16 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:12:06 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char *s)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
 	if (!s)

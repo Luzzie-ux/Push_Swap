@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 21:46:16 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 18:16:44 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:09:35 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 		return (flags->flag_name = ERROR, NULL);
 	result = ft_split(tmp, ' ');
 	if (!result || !*result)
-		return (flags->flag_name = ERROR, free(result), free(tmp),  NULL);
+		return (flags->flag_name = ERROR, free(result), free(tmp), NULL);
 	return (free(tmp), result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 18:21:26 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:23:33 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*validate_args(char **args, t_flags *flags)
 		return (NULL);
 	compute_disorder(flags);
 	if (flags->disorder == 0)
-		return (flags->flag_name = ERROR, NULL);
+		return (flags->flag_name = ERROR, free(flags->numbers), NULL);
 	return (NULL);
 }
 
@@ -62,12 +62,13 @@ void	validate_flags(char **arg, t_flags *flag)
 void	*validate_nums(char **num, t_flags *flags)
 {
 	int	i;
-	int len;
+	int	len;
 
 	len = ft_phrlen(num);
 	i = 0;
-	if(check_errors(num))
-		return (ft_putstr_fd("Found Error\n", 2), flags->flag_name = ERROR, NULL);
+	if (check_errors(num))
+		return (ft_putstr_fd("Found Error\n", 2),
+			flags->flag_name = ERROR, NULL);
 	flags->numbers = (int *)malloc(len * sizeof(int));
 	if (!flags->numbers)
 		return (flags->flag_name = ERROR, NULL);

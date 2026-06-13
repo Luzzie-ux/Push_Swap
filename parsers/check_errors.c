@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 14:53:20 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:07:13 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:12:46 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	check_errors(char **num)
 	while (num[i])
 	{
 		val = ft_atol(num[i]);
-		if (val > 2147483647 || val < -2147483648)
+		if (val > INT_MAX || val < INT_MIN)
 			return (ft_putstr_fd("Overflow\n", 2), 1);
-		else if(check_for_letters(num[i]))
+		else if (check_for_letters(num[i]))
 			return (ft_putstr_fd("Found letter\n", 2), 1);
-		else if(check_for_signs(num[i]))
+		else if (check_for_signs(num[i]))
 			return (ft_putstr_fd("Found signs\n", 2), 1);
 		i++;
 	}

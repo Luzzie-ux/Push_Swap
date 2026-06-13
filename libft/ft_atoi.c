@@ -6,13 +6,13 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:01:04 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:05:43 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:09:21 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	long		num;
 	int			sign;
