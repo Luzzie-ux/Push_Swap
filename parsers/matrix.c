@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 21:46:16 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:09:35 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 20:57:39 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 
 	i = 0;
 	total_lenght = 0;
-	flags->flag_name = ADAPTATIVE;
 	while (i < argc)
 	{
+		if (argv[i][0] == '\0' || (argv[i][0] == ' ' && argv[i][1] == '\0'))
+			return (write(2, "Error\n", 6), exit(1), NULL);
 		total_lenght += ft_strlen(argv[i]);
 		i++;
 	}
@@ -48,8 +49,6 @@ char	*join(char *tmp, char **argv, int argc)
 
 	pos = 0;
 	i = 0;
-	if (!tmp || !argv || !*argv)
-		return (ft_putstr_fd("Someone is NULL\n", 2), NULL);
 	while (i < argc)
 	{
 		j = 0;
