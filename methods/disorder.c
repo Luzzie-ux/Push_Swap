@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 21:45:25 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 21:47:35 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 18:02:53 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ void	*compute_disorder(t_flags *array)
 {
 	int		i;
 	int		j;
-	float	mistakes;
-	float	total_pairs;
+	double	mistakes;
+	double	total_pairs;
 
 	i = 0;
 	j = 0;
 	mistakes = 0;
 	total_pairs = 0;
-	array->disorder = 0;
 	while (i < array->nsize)
 	{
 		j = i + 1;
@@ -36,5 +35,7 @@ void	*compute_disorder(t_flags *array)
 		}
 		i++;
 	}
+	if (total_pairs == 0)
+		return (array->flag_name = ERROR, NULL);
 	return (array->disorder = (mistakes / total_pairs), NULL);
 }

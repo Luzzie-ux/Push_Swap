@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 21:53:43 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:01:34 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_strat
 	COMPLEX,
 	ADAPTATIVE,
 	ERROR
-}	t_strat;
+} t_strat;
 
 typedef struct s_flags
 {
@@ -42,26 +42,28 @@ typedef struct s_flags
 	int			advance;
 	int			*numbers;
 	int			nsize;
-	float		disorder;
-}	t_flags;
+	double		disorder;
+}				t_flags;
 
 int		ft_lstsize(t_list *lst);
 void	*compute_disorder(t_flags *array);
-char	**matrix(int argc, char **argv, t_flags *flags);
 
 void	free_list(t_list *head);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 
+char	**matrix(int argc, char **argv, t_flags *flags);
+char	*join(char *tmp, char **argv, int argc);
 void	validate_flags(char **arg, t_flags *flag);
-void	validate_args(char **args, t_flags *flags);
-void	*validate_nums(char **num, int index, t_flags *flags);
+void	*validate_args(char **args, t_flags *flags);
+void	*validate_nums(char **num, t_flags *flags);
 
-void	*free_split(char **string);
-int		check_errors(t_flags *flags, char **copy, int check);
-void	*check_for_duple(char **copy, t_flags *flags);
-void	*check_for_letters(char *copy, t_flags *flags);
-void	*check_for_signs(char *copy, t_flags *flags);
+void	*free_matrix(char **string);
+int		check_errors(char **nums);
+int		check_for_duple(char **copy);
+int		check_for_letters(char *copy);
+int		check_for_signs(char *copy);
+int		check_for_duple2(char **copy);
 
 void	sa(t_list **stack_a);
 void	sb(t_list **stack_b);

@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:48:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 17:17:53 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 18:13:21 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen(char *s);
+
+size_t	ft_phrlen(char **p);
 
 void	ft_putchar_fd(char c, int fd);
 

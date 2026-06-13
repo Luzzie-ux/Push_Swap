@@ -6,25 +6,31 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/12 21:45:17 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 18:21:26 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-void	validate_args(char **args, t_flags *flags)
+void	*validate_args(char **args, t_flags *flags)
 {
-	(*flags).advance = 0;
-	(*flags).bench = 0;
-	(*flags).flag_name = ADAPTATIVE;
+	flags->bench = 0;
+	flags->advance = 0;
+	flags->disorder = 0;
+	flags->flag_name = ADAPTATIVE;
+	if (!args || !*args)
+		return (flags->flag_name = ERROR, NULL);
 	if ((*args)[0] == '-' && (*args)[1] == '-')
 		validate_flags(args, flags);
-	if ((*flags).flag_name == ERROR)
-		return ;
-	validate_nums(args, (*flags).advance, flags);
-	if ((*flags).flag_name == ERROR)
-		return ;
+	if (flags->flag_name == ERROR)
+		return (NULL);
+	validate_nums(args + flags->advance, flags);
+	if (flags->flag_name == ERROR)
+		return (NULL);
 	compute_disorder(flags);
+	if (flags->disorder == 0)
+		return (flags->flag_name = ERROR, NULL);
+	return (NULL);
 }
 
 void	validate_flags(char **arg, t_flags *flag)
@@ -53,28 +59,23 @@ void	validate_flags(char **arg, t_flags *flag)
 	(*flag).advance += i;
 }
 
-void	*validate_nums(char **num, int index, t_flags *flags)
+void	*validate_nums(char **num, t_flags *flags)
 {
-	char	**copy;
-	int		did_split;
+	int	i;
+	int len;
 
-	did_split = 0;
-	if (num[index] && !num[index + 1])
+	len = ft_phrlen(num);
+	i = 0;
+	if(check_errors(num))
+		return (ft_putstr_fd("Found Error\n", 2), flags->flag_name = ERROR, NULL);
+	flags->numbers = (int *)malloc(len * sizeof(int));
+	if (!flags->numbers)
+		return (flags->flag_name = ERROR, NULL);
+	flags->nsize = len;
+	while (num[i])
 	{
-		copy = ft_split(num[index], ' ');
-		did_split = 1;
+		(*flags).numbers[i] = ft_atoi(num[i]);
+		i++;
 	}
-	else
-		copy = num;
-	while (copy[index - (*flags).advance])
-		index++;
-	(*flags).numbers = malloc((index - (*flags).advance) * sizeof(int));
-	if (!(*flags).numbers)
-		return ((*flags).flag_name = ERROR, free_split(copy));
-	(*flags).nsize = index - (*flags).advance;
-	if (check_errors(flags, copy, did_split))
-		return (free((*flags).numbers), NULL);
-	if (did_split == 1)
-		free_split(copy);
 	return (NULL);
 }
