@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 14:53:20 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:01:46 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:07:13 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_errors(char **num)
 		return (ft_putstr_fd("Found duple\n", 2), 1);
 	while (num[i])
 	{
-		val = atol(num[i]);
+		val = ft_atol(num[i]);
 		if (val > 2147483647 || val < -2147483648)
 			return (ft_putstr_fd("Overflow\n", 2), 1);
 		else if(check_for_letters(num[i]))

@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:48:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 18:13:21 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/13 19:06:47 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_gets(char **args);
 char	**ft_split(char const *s, char c);
 
 int		ft_atoi(const char *nptr);
+
+long	ft_atol(const char *nptr);
 
 int		ft_strcmp(const char *s1, const char *s2);
 
