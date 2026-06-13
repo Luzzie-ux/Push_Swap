@@ -21,13 +21,13 @@ typedef enum e_strat
 
 typedef struct s_flags
 {
-	t_strat flag_name;
-	int bench;
-	int advance;
-	int *numbers;
-	int nsize;
-	float disorder;
-} t_flags;
+	t_strat		flag_name;
+	int			bench;
+	int			advance;
+	int			*numbers;
+	int			nsize;
+	double		disorder;
+}				t_flags;
 
 size_t ft_strlen(char *s)
 {
@@ -278,7 +278,7 @@ int	check_for_letters(char *copy)
 	int	i;
 
 	i = 0;
-	while (copy[i])
+	while (copy[i] != '\0')
 	{
 		if (copy[i] >= 65 && copy[i] <= 126)
 			return (1);
@@ -294,7 +294,8 @@ int	check_for_signs(char *copy)
 	i = 0;
 	while (copy[i])
 	{
-		if (copy[i + 1] == '\0' && (copy[i] == '-' || copy[i] == '+'))
+		if ((copy[i + 1] == '\0' || copy[i + 1] == '+')
+			&& (copy[i] == '-' || copy[i] == '+'))
 			return (1);
 		else if ((copy[i] >= '!' && copy[i] <= '*') || copy[i] == ',')
 			return (1);
@@ -314,13 +315,13 @@ int	check_errors(char **num)
 
 	i = 0;
 	val = 0;
+	if (check_for_duple(num))
+		return (printf("Found duple\n"), 1);
 	while (num[i])
 	{
 		val = atol(num[i]);
 		if (val > 2147483647 || val < -2147483648)
 			return (printf("Overflow\n"), 1);
-		else if (check_for_duple(num))
-			return (printf("Found duple\n"), 1);
 		else if(check_for_letters(num[i]))
 			return (printf("Found letter\n"), 1);
 		else if(check_for_signs(num[i]))
@@ -334,8 +335,8 @@ void	*compute_disorder(t_flags *array)
 {
 	int		i;
 	int		j;
-	float	mistakes;
-	float	total_pairs;
+	double	mistakes;
+	double	total_pairs;
 
 	i = 0;
 	j = 0;
@@ -444,8 +445,8 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 	if (!tmp)
 		return (flags->flag_name = ERROR, NULL);
 	result = ft_split(tmp, ' ');
-	if (!result)
-		return (flags->flag_name = ERROR, free(tmp),  NULL);
+	if (!result || !*result)
+		return (flags->flag_name = ERROR, free(result), free(tmp),  NULL);
 	return (free(tmp), result);
 }
 
@@ -458,7 +459,7 @@ int main(int argc, char **argv)
 		return (printf("Not Enough Arguments\n"), 1);
 	args = matrix(argc - 1, argv + 1, &flags);
 	if (!args || flags.flag_name == ERROR)
-		return (printf("Something Went Wrong\n"), 1);
+		return (free(args), printf("Something Went Wrong\n"), 1);
 	validate_args(args, &flags);
 	if (flags.flag_name == ERROR)
 		return (free_matrix(args), printf("Validation went wrong\n"), 1);
