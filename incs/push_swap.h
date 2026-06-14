@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 18:20:12 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:45:26 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,5 @@ void	sort_simple(t_stack **a, t_stack **b, int print);
 void	sort_adaptive(t_stack **a, t_stack **b, t_flags *mode);
 void	sort_complex(t_stack **a, t_stack **b, int print);
 void	sort_medium(t_stack **a, t_stack **b, int print);
-
 
 #endif

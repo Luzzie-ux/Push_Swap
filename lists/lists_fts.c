@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 13:22:25 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 17:48:51 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:47:21 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 t_stack	*ft_lstnew(int value)
 {
 	t_stack	*box;
+
 	box = (t_stack *)malloc(sizeof(t_stack));
 	if (!box)
 		return (NULL);

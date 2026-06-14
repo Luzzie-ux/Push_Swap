@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 17:50:22 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 17:50:38 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:47:08 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,23 @@ t_bench	*get_bench(int *set_mode)
 void	init_bench(double disorder, int mode, int bench)
 {
 	t_bench	*b;
-	int		strategy_type;
+	int		strategy;
 
-	strategy_type = mode;
+	strategy = mode;
 	b = get_bench(&bench);
 	if (!b)
 		return ;
 	ft_bzero(b, sizeof(t_bench));
 	b->disorder = disorder;
-	if (strategy_type == SIMPLE)
+	if (strategy == SIMPLE)
 		b->strategy = "Simple / O(n^2)";
-	else if (strategy_type != MEDIUM && strategy_type != COMPLEX&& disorder < 0.2)
+	else if (strategy != MEDIUM && strategy != COMPLEX && disorder < 0.2)
 		b->strategy = "Adaptive / O(n^2)";
-	else if (strategy_type == MEDIUM)
+	else if (strategy == MEDIUM)
 		b->strategy = "Medium / O(n√n)";
-	else if (strategy_type != COMPLEX && disorder < 0.5)
+	else if (strategy != COMPLEX && disorder < 0.5)
 		b->strategy = "Adaptive / O(n√n)";
-	else if (strategy_type == COMPLEX)
+	else if (strategy == COMPLEX)
 		b->strategy = "Complex / O(n log n)";
 	else
 		b->strategy = "Adaptive / O(n log n)";
