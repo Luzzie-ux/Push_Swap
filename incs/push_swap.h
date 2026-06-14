@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 18:04:20 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:20:12 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ char	*join(char *tmp, char **argv, int argc);
 char	**matrix(int argc, char **argv, t_flags *flags);
 
 int		check_for_duple(char **copy);
+int		check_for_signs(char *copy);
 int		check_for_letters(char *copy);
 int		check_errors(char **nums);
 
+void	*compute_disorder(t_flags *array);
 void	*validate_nums(char **num, t_flags *flags);
 void	validate_flags(char **arg, t_flags *flag);
 void	*validate_args(char **args, t_flags *flags);
@@ -132,11 +134,13 @@ void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b, int print);
 
 /*sorting*/
+
 void	sort_two(t_stack **a, int print);
 void	sort_three(t_stack **a, int print);
 void	sort_five(t_stack **a, t_stack **b, int print);
 
 /*algos*/
+
 void	sort_simple(t_stack **a, t_stack **b, int print);
 void	sort_adaptive(t_stack **a, t_stack **b, t_flags *mode);
 void	sort_complex(t_stack **a, t_stack **b, int print);

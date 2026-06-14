@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 14:53:20 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 17:45:55 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:20:43 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	check_errors(char **num)
 		if (val > INT_MAX || val < INT_MIN)
 			return (1);
 		else if (check_for_letters(num[i]))
+			return (1);
+		else if (check_for_signs(num[i]))
 			return (1);
 		i++;
 	}
@@ -65,6 +67,27 @@ int	check_for_letters(char *copy)
 	while (copy[i])
 	{
 		if (!(copy[i] >= '0' && copy[i] <= '9'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_for_signs(char *copy)
+{
+	int	i;
+
+	i = 0;
+	while (copy[i])
+	{
+		if ((copy[i + 1] == '\0' || copy[i + 1] == '+')
+			&& (copy[i] == '-' || copy[i] == '+'))
+			return (1);
+		else if ((copy[i] >= '!' && copy[i] <= '*') || copy[i] == ',')
+			return (1);
+		else if (copy[i] == '.' || (copy[i] >= ':' && copy[i] <= '@'))
+			return (1);
+		else if (copy[i] == '/')
 			return (1);
 		i++;
 	}

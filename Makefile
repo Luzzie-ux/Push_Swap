@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/14 18:03:39 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/14 18:15:29 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT = libft/libft.a
 
 FT_PRINTF = ft_printf/libftprintf.a
 
-SRCS = 	lists/create_list.c lists/lists_fts.c lists/bench.c lists/bench_utils \
+SRCS = 	lists/create_list.c lists/lists_fts.c lists/bench.c lists/bench_utils.c \
 		methods/swap_n_push.c methods/rotate_n_rrotate.c methods/minmax_rrr.c methods/disorder.c \
 		parsers/validate.c parsers/matrix.c parsers/check_errors.c \
 		algos/sorts.c algos/simple_alg.c algos/medium_alg.c algos/complex_alg.c algos/adaptive_alg.c\
