@@ -5,52 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 11:18:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/26 11:59:33 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/05/07 12:52:08 by diferrei          #+#    #+#             */
+/*   Updated: 2026/06/14 21:17:34 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	phandler(const char *str, va_list args)
+static int	ft_conversion(va_list args, char format)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	if (str[i] == 'c')
-		return (ft_putchar(va_arg(args, int)));
-	else if (str[i] == 's')
-		return (ft_putstr(va_arg(args, char *)));
-	else if (str[i] == 'p')
-		return (ft_putptr(va_arg(args, void *)));
-	else if ((str[i] == 'd') || (str[i] == 'i'))
-		return (ft_putnbr(va_arg(args, int)));
-	else if (str[i] == 'u')
-		return (ft_putnbr_un(va_arg(args, unsigned int)));
-	else if (str[i] == 'x')
-		return (ft_puthex(va_arg(args, unsigned int), 'x'));
-	else if (str[i] == 'X')
-		return (ft_puthex(va_arg(args, unsigned int), 'X'));
-	else if (str[i] == '%')
-		return (ft_putchar('%'));
-	return (0);
+	len = 0;
+	if (format == 'c')
+		len += ft_putchar(va_arg(args, int));
+	else if (format == '%')
+		len += ft_putchar('%');
+	else if (format == 's')
+		len += ft_putstr(va_arg(args, char *));
+	else if (format == 'p')
+		len += ft_putptr(va_arg(args, void *));
+	else if (format == 'x' || format == 'X')
+		len += ft_putnbr_hex((unsigned int)va_arg(args, unsigned long), format);
+	else if (format == 'd' || format == 'i')
+		len += ft_putnbr(va_arg(args, int));
+	else if (format == 'u')
+		len += ft_putnbr_unsigned(va_arg(args, unsigned int));
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
 {
+	int		i;
+	int		total_len;
 	va_list	args;
-	int		result;
 
-	result = 0;
+	i = 0;
+	total_len = 0;
+	if (!format)
+		return (-1);
 	va_start(args, format);
-	while (*format)
+	while (format[i])
 	{
-		if (*format == '%')
-			result += (phandler(++format, args));
-		else
-			result += (ft_putchar(*format));
-		format++;
+		if (format[i] != '%')
+			total_len += ft_putchar(format[i]);
+		else if (format[i] == '%')
+		{
+			total_len += ft_conversion(args, format[i + 1]);
+			i++;
+		}
+		i++;
 	}
 	va_end(args);
-	return (result);
+	return (total_len);
 }
