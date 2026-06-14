@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   complex_alg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 11:18:08 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/12 12:29:56 by diferrei         ###   ########.fr       */
+/*   Updated: 2026/06/14 15:02:23 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "refactor.h"
 
 static int	get_max_bits(t_stack *stack)
 {

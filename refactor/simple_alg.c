@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simple_alg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 17:10:09 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/12 14:17:41 by diferrei         ###   ########.fr       */
+/*   Updated: 2026/06/14 15:16:34 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
 
-void	sort_three(t_stack **a, int print)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	if (is_sorted(*a))
-		return ;
-	first = (*a)->i;
-	second = (*a)->next->i;
-	third = (*a)->next->next->i;
-	if (first > second && second < third && first < third)
-		sa(a, print);
-	else if (first > second && second > third)
-	{
-		sa(a, print);
-		rra(a, print);
-	}
-	else if (first > second && second < third && first > third)
-		ra(a, print);
-	else if (first < second && second > third && first < third)
-	{
-		sa(a, print);
-		ra(a, print);
-	}
-	else if (first < second && second > third && first > third)
-		rra(a, print);
-}
+#include "refactor.h"
 
 static int	get_pivot(t_stack *a)
 {

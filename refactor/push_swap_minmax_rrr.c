@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_minmax_rrr.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 11:09:55 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/12 12:28:29 by diferrei         ###   ########.fr       */
+/*   Updated: 2026/06/14 16:00:54 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "refactor.h"
 
 void	rrr(t_stack **a, t_stack **b, int print)
 {

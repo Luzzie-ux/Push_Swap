@@ -108,6 +108,20 @@ long	ft_atol(const char *nptr)
 	return (num * sign);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+	size_t			i;
+
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		ptr[i] = '\0';
+		i++;
+	}
+}
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned const char	*ps;
@@ -416,18 +430,19 @@ int	get_stack_size(t_stack *stack)
 	return (size);
 }
 
-void	free_list(t_stack *head)
+void	free_stack(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*tmp;
 
-	if (!head)
+	if (!stack || !*stack)
 		return ;
-	while (head)
+	while (*stack)
 	{
-		temp = head;
-		head = head->next;
-		free(temp);
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
+	*stack = NULL;
 }
 
 t_stack	*ft_lstlast(t_stack *lst)
@@ -480,7 +495,7 @@ t_stack	*create_list(int *arr, int size)
 	{
 		new_node = ft_lstnew(arr[i++]);
 		if (!new_node)
-			return (free_list(head), NULL);
+			return (free_stack(&head), NULL);
 		if (!head)
 			head = new_node;
 		else
@@ -490,33 +505,7 @@ t_stack	*create_list(int *arr, int size)
 	return (head);
 }
 
-void	set_index(t_stack *a)
-{
-	t_stack	*min;
-	t_stack	*tmp;
-	int		index;
 
-	index = 0;
-	tmp = a;
-	while (tmp)
-	{
-		tmp->i = -1;
-		tmp = tmp->next;
-	}
-	while (index < get_stack_size(a))
-	{
-		min = NULL;
-		tmp = a;
-		while (tmp)
-		{
-			if (tmp->i == -1 && (!min || tmp->value < min->value))
-				min = tmp;
-			tmp = tmp->next;
-		}
-		if (min)
-			min->i = index++;
-	}
-}
 
 void	*free_matrix(char **matrix)
 {
@@ -560,7 +549,6 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 
 	i = 0;
 	total_lenght = 0;
-	flags->flag_name = ADAPTATIVE;
 	while (i < argc)
 	{
 		if (argv[i][0] == '\0' || (argv[i][0] == ' ' && argv[i][1] == '\0'))
@@ -581,21 +569,103 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 
 t_stack	*setup(char **args, t_flags *flags)
 {
-	t_stack *a;
+	t_stack	*a;
 
 	validate_args(args, flags);
 	if (flags->flag_name == ERROR)
 		return (write(2, "Error\n", 6), free_matrix(args), exit(1), NULL);
 	a = create_list(flags->numbers, flags->nsize);
 	free(flags->numbers);
-    flags->numbers = NULL;
+	flags->numbers = NULL;
 	if (!a)
 		return (write(2, "Error\n", 6), exit(1), NULL);
 	set_index(a);
 	return (a);
 }
 
-// int	execute(t_flags *flags, t_stack *a, t_stack *b)
-// {
-// 	exit(1);
-// }
+
+static void	print_disorder_to_bench(t_bench *b)
+{
+	int	int_part;
+	int	dec_part;
+
+	int_part = (int)(b->disorder * 100);
+	dec_part = (int)((b->disorder * 100 - int_part) * 100);
+	if (dec_part < 0)
+		dec_part = -dec_part;
+	write(2, "[bench] disorder:  ", 19);
+	if (dec_part < 10)
+		ft_printf("%d.0%d%%\n", int_part, dec_part);
+	else
+		ft_printf("%d.%d%%\n", int_part, dec_part);
+}
+
+void	print_bench(void)
+{
+	t_bench	*b;
+
+	b = get_bench(NULL);
+	if (!b)
+		return ;
+	print_disorder_to_bench(b);
+	ft_printf("[bench] strategy:  %s\n", b->strategy);
+	ft_printf("[bench] total_ops: %d\n", b->total_operations);
+	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+		b->sa, b->sb, b->ss, b->pa, b->pb);
+	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra: %d  rrb: %d  rrr: %d\n",
+		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
+}
+
+t_bench	*get_bench(int *set_mode)
+{
+	static t_bench	bench;
+	static int		mode = 0;
+
+	if (set_mode)
+		mode = *set_mode;
+	if (mode == 0)
+		return (NULL);
+	return (&bench);
+}
+
+void	init_bench(double disorder, int mode)
+{
+	t_bench	*b;
+	int		strategy_type;
+
+	strategy_type = mode;
+	if (mode == 2 || mode == 3 || mode == 4)
+		mode = 1;
+	b = get_bench(&mode);
+	if (!b)
+		return ;
+	ft_bzero(b, sizeof(t_bench));
+	b->disorder = disorder;
+	if (strategy_type == 2)
+		b->strategy = "Simple / O(n^2)";
+	else if (strategy_type != 3 && strategy_type != 4 && disorder < 0.2)
+		b->strategy = "Adaptive / O(n^2)";
+	else if (strategy_type == 3)
+		b->strategy = "Medium / O(n√n)";
+	else if (strategy_type != 4 && disorder < 0.5)
+		b->strategy = "Adaptive / O(n√n)";
+	else if (strategy_type == 4)
+		b->strategy = "Complex / O(n log n)";
+	else
+		b->strategy = "Adaptive / O(n log n)";
+}
+
+int	execute(t_flags *flags, t_stack **a, t_stack **b)
+{
+	init_bench(flags->disorder, flags->bench);
+	if (flags->flag_name == SIMPLE && !flags->bench)
+		sort_simple(a, b, 1);
+	else if (flags->flag_name == MEDIUM && !flags->bench)
+		sort_medium(a, b, 1);
+	else if (flags->flag_name == COMPLEX && !flags->bench)
+		sort_complex(a, b, 1);
+	else
+		sort_adaptive(a, b, flags);
+	print_bench();
+	return (0);
+}

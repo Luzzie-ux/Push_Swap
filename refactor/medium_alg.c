@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   medium_alg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 18:02:37 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/09 16:45:44 by diferrei         ###   ########.fr       */
+/*   Updated: 2026/06/14 15:02:15 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "refactor.h"
 
 static	int	range_size(int size)
 {
