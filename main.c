@@ -28,6 +28,5 @@ int	main(int argc, char **argv)
 	a = setup(args, &flags);
 	b = NULL;
 	execute(&flags, &a, &b);
-	write(1, "Program is Over!\n", 17);
 	return (free_matrix(args), free_stack(&a), 0);
 }
