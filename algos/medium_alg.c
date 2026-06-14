@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 18:02:37 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/14 15:02:15 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:05:04 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 static	int	range_size(int size)
 {

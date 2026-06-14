@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 10:52:25 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 15:32:39 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:04:58 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 void	sort_adaptive(t_stack **a, t_stack **b, t_flags *mode)
 {

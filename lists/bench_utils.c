@@ -3,53 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bench_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/19 14:02:05 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/12 12:29:45 by diferrei         ###   ########.fr       */
+/*   Created: 2026/06/14 17:51:46 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/06/14 17:51:58 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
-#include "ft_printf.h"
 
-t_bench	*get_bench(int *set_mode)
-{
-	static t_bench	bench;
-	static int		mode = 0;
-
-	if (set_mode)
-		mode = *set_mode;
-	if (mode == 0)
-		return (NULL);
-	return (&bench);
-}
-
-void	init_bench(double disorder, int mode)
-{
-	t_bench	*b;
-	int		strategy_type;
-
-	strategy_type = mode;
-	if (mode == 2 || mode == 3 || mode == 4)
-		mode = 1;
-	b = get_bench(&mode);
-	if (!b)
-		return ;
-	ft_bzero(b, sizeof(t_bench));
-	b->disorder = disorder;
-	if (strategy_type == 2)
-		b->strategy = "Simple / O(n^2)";
-	else if (strategy_type != 3 && strategy_type != 4 && disorder < 0.2)
-		b->strategy = "Adaptive / O(n^2)";
-	else if (strategy_type == 3)
-		b->strategy = "Medium / O(n√n)";
-	else if (strategy_type != 4 && disorder < 0.5)
-		b->strategy = "Adaptive / O(n√n)";
-	else if (strategy_type == 4)
-		b->strategy = "Complex / O(n log n)";
-	else
-		b->strategy = "Adaptive / O(n log n)";
-}
+#include "../incs/push_swap.h"
 
 static void	count_op_sp_r(t_bench *b, char *op)
 {

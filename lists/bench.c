@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bench.c                                      :+:      :+:    :+:   */
+/*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/19 14:44:18 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/12 12:30:36 by diferrei         ###   ########.fr       */
+/*   Created: 2026/06/14 17:50:22 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/06/14 17:50:38 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
-#include "ft_printf.h"
+
+#include "../incs/push_swap.h"
 
 static void	print_disorder_to_bench(t_bench *b)
 {
@@ -42,4 +42,41 @@ void	print_bench(void)
 		b->sa, b->sb, b->ss, b->pa, b->pb);
 	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra: %d  rrb: %d  rrr: %d\n",
 		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
+}
+
+t_bench	*get_bench(int *set_mode)
+{
+	static t_bench	bench;
+	static int		mode = 0;
+
+	if (set_mode)
+		mode = *set_mode;
+	if (mode == 0)
+		return (NULL);
+	return (&bench);
+}
+
+void	init_bench(double disorder, int mode, int bench)
+{
+	t_bench	*b;
+	int		strategy_type;
+
+	strategy_type = mode;
+	b = get_bench(&bench);
+	if (!b)
+		return ;
+	ft_bzero(b, sizeof(t_bench));
+	b->disorder = disorder;
+	if (strategy_type == SIMPLE)
+		b->strategy = "Simple / O(n^2)";
+	else if (strategy_type != MEDIUM && strategy_type != COMPLEX&& disorder < 0.2)
+		b->strategy = "Adaptive / O(n^2)";
+	else if (strategy_type == MEDIUM)
+		b->strategy = "Medium / O(n√n)";
+	else if (strategy_type != COMPLEX && disorder < 0.5)
+		b->strategy = "Adaptive / O(n√n)";
+	else if (strategy_type == COMPLEX)
+		b->strategy = "Complex / O(n log n)";
+	else
+		b->strategy = "Adaptive / O(n log n)";
 }

@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 17:10:09 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/14 15:16:34 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:05:06 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 static int	get_pivot(t_stack *a)
 {

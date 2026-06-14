@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 10:28:16 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 15:56:46 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:05:09 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 void	sort_two(t_stack **a, int print)
 {

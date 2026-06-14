@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 11:09:55 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/14 16:00:54 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 17:54:15 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 void	rrr(t_stack **a, t_stack **b, int print)
 {

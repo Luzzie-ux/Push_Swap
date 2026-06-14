@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:00:38 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 10:53:27 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:04:28 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,18 @@ int	main(int argc, char **argv)
 {
 	char	**args;
 	t_flags	flags;
-	t_list	*a;
-	t_list	*b;
+	t_stack	*a;
+	t_stack	*b;
 
-	(void)b;
 	if (argc < 2)
-		return (ft_putstr_fd("Error\n", 2), 1);
+		return (write(2, "Error\n", 6), 1);
+	flags.flag_name = ADAPTIVE;
 	args = matrix(argc - 1, argv + 1, &flags);
 	if (!args || flags.flag_name == ERROR)
-		return (ft_putstr_fd("Error\n", 2), free(args), 1);
-	validate_args(args, &flags);
-	if (flags.flag_name == ERROR)
-		return (ft_putstr_fd("Error\n", 2), free_matrix(args), 1);
-	a = create_list(flags.numbers, flags.nsize);
-	ft_printf("Program is Over!\n");
-	return (free_matrix(args), free(flags.numbers), free_list(a), 0);
+		return (write(2, "Error\n", 6), free(args), 1);
+	a = setup(args, &flags);
+	b = NULL;
+	execute(&flags, &a, &b);
+	write(1, "Program is Over!\n", 17);
+	return (free_matrix(args), free_stack(&a), 0);
 }

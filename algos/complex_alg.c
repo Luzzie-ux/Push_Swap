@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 11:18:08 by diferrei          #+#    #+#             */
-/*   Updated: 2026/06/14 15:02:23 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:05:00 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "refactor.h"
+#include "../incs/push_swap.h"
 
 static int	get_max_bits(t_stack *stack)
 {

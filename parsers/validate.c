@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:23:33 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:05:22 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*validate_args(char **args, t_flags *flags)
 	flags->bench = 0;
 	flags->advance = 0;
 	flags->disorder = 0;
-	flags->flag_name = ADAPTATIVE;
 	if (!args || !*args)
 		return (flags->flag_name = ERROR, NULL);
 	if ((*args)[0] == '-' && (*args)[1] == '-')
@@ -28,8 +27,8 @@ void	*validate_args(char **args, t_flags *flags)
 	if (flags->flag_name == ERROR)
 		return (NULL);
 	compute_disorder(flags);
-	if (flags->disorder == 0)
-		return (flags->flag_name = ERROR, free(flags->numbers), NULL);
+	if (flags->flag_name == ERROR)
+		return (free(flags->numbers), NULL);
 	return (NULL);
 }
 
@@ -46,8 +45,8 @@ void	validate_flags(char **arg, t_flags *flag)
 			((*flag).flag_name = MEDIUM);
 		else if (!(ft_strncmp(arg[i], "--complex", 10)))
 			((*flag).flag_name = COMPLEX);
-		else if (!(ft_strncmp(arg[i], "--adaptative", 11)))
-			((*flag).flag_name = ADAPTATIVE);
+		else if (!(ft_strncmp(arg[i], "-adaptive", 9)))
+			((*flag).flag_name = ADAPTIVE);
 		else if (!(ft_strncmp(arg[i], "--bench", 8)))
 			((*flag).bench = 1);
 		else
@@ -67,8 +66,7 @@ void	*validate_nums(char **num, t_flags *flags)
 	len = ft_phrlen(num);
 	i = 0;
 	if (check_errors(num))
-		return (ft_putstr_fd("Found Error\n", 2),
-			flags->flag_name = ERROR, NULL);
+		return (flags->flag_name = ERROR, NULL);
 	flags->numbers = (int *)malloc(len * sizeof(int));
 	if (!flags->numbers)
 		return (flags->flag_name = ERROR, NULL);
@@ -79,4 +77,20 @@ void	*validate_nums(char **num, t_flags *flags)
 		i++;
 	}
 	return (NULL);
+}
+
+t_stack	*setup(char **args, t_flags *flags)
+{
+	t_stack	*a;
+
+	validate_args(args, flags);
+	if (flags->flag_name == ERROR)
+		return (write(2, "Error\n", 6), free_matrix(args), exit(1), NULL);
+	a = create_list(flags->numbers, flags->nsize);
+	free(flags->numbers);
+	flags->numbers = NULL;
+	if (!a)
+		return (write(2, "Error\n", 6), exit(1), NULL);
+	set_index(a);
+	return (a);
 }
