@@ -628,28 +628,26 @@ t_bench	*get_bench(int *set_mode)
 	return (&bench);
 }
 
-void	init_bench(double disorder, int mode)
+void	init_bench(double disorder, int mode, int bench)
 {
 	t_bench	*b;
 	int		strategy_type;
 
 	strategy_type = mode;
-	if (mode == 2 || mode == 3 || mode == 4)
-		mode = 1;
-	b = get_bench(&mode);
+	b = get_bench(&bench);
 	if (!b)
 		return ;
 	ft_bzero(b, sizeof(t_bench));
 	b->disorder = disorder;
-	if (strategy_type == 2)
+	if (strategy_type == SIMPLE)
 		b->strategy = "Simple / O(n^2)";
-	else if (strategy_type != 3 && strategy_type != 4 && disorder < 0.2)
+	else if (strategy_type != MEDIUM && strategy_type != COMPLEX&& disorder < 0.2)
 		b->strategy = "Adaptive / O(n^2)";
-	else if (strategy_type == 3)
+	else if (strategy_type == MEDIUM)
 		b->strategy = "Medium / O(n√n)";
-	else if (strategy_type != 4 && disorder < 0.5)
+	else if (strategy_type != COMPLEX && disorder < 0.5)
 		b->strategy = "Adaptive / O(n√n)";
-	else if (strategy_type == 4)
+	else if (strategy_type == COMPLEX)
 		b->strategy = "Complex / O(n log n)";
 	else
 		b->strategy = "Adaptive / O(n log n)";
@@ -657,12 +655,12 @@ void	init_bench(double disorder, int mode)
 
 int	execute(t_flags *flags, t_stack **a, t_stack **b)
 {
-	init_bench(flags->disorder, flags->bench);
-	if (flags->flag_name == SIMPLE && !flags->bench)
+	init_bench(flags->disorder, flags->flag_name, flags->bench);
+	if (flags->flag_name == SIMPLE)
 		sort_simple(a, b, 1);
-	else if (flags->flag_name == MEDIUM && !flags->bench)
+	else if (flags->flag_name == MEDIUM)
 		sort_medium(a, b, 1);
-	else if (flags->flag_name == COMPLEX && !flags->bench)
+	else if (flags->flag_name == COMPLEX)
 		sort_complex(a, b, 1);
 	else
 		sort_adaptive(a, b, flags);
