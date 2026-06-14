@@ -343,7 +343,7 @@ void	*validate_nums(char **num, t_flags *flags)
 	len = ft_phrlen(num);
 	i = 0;
 	if (check_errors(num))
-		return (write(2, "Error\n", 6), flags->flag_name = ERROR, NULL);
+		return (flags->flag_name = ERROR, NULL);
 	flags->numbers = (int *)malloc(len * sizeof(int));
 	if (!flags->numbers)
 		return (flags->flag_name = ERROR, NULL);
