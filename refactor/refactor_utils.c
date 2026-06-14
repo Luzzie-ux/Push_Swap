@@ -399,8 +399,8 @@ void	*validate_args(char **args, t_flags *flags)
 	if (flags->flag_name == ERROR)
 		return (NULL);
 	compute_disorder(flags);
-	if (flags->disorder == 0)
-		return (flags->flag_name = ERROR, free(flags->numbers), NULL);
+	if (flags->flag_name == ERROR)
+		return (free(flags->numbers), NULL);
 	return (NULL);
 }
 
@@ -504,8 +504,6 @@ t_stack	*create_list(int *arr, int size)
 	}
 	return (head);
 }
-
-
 
 void	*free_matrix(char **matrix)
 {
