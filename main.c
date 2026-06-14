@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:00:38 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 20:55:14 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 10:53:27 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 	t_list	*b;
 
 	(void)b;
-	flags.flag_name = ADAPTATIVE;
 	if (argc < 2)
 		return (ft_putstr_fd("Error\n", 2), 1);
 	args = matrix(argc - 1, argv + 1, &flags);
