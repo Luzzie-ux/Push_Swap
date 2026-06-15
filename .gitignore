@@ -4,3 +4,4 @@ a.out
 push_swap
 test/a.out
 *.txt
+*.py
