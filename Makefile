@@ -6,7 +6,7 @@
 #    By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/08 12:22:11 by rodrpere          #+#    #+#              #
-#    Updated: 2026/06/14 18:15:29 by rodrpere         ###   ########.fr        #
+#    Updated: 2026/06/15 14:26:46 by rodrpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -Iincs -Ilibft -Ift_printf
 
