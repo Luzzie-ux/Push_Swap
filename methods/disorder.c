@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 21:45:25 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 17:47:21 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 14:26:54 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ void	*compute_disorder(t_flags *array)
 		}
 		i++;
 	}
-	if (total_pairs == 0)
-		return (array->flag_name = ERROR, NULL);
 	return (array->disorder = ((double)mistakes / total_pairs), NULL);
 }

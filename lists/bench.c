@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 17:50:22 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 18:47:08 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 15:25:13 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,10 @@ t_bench	*get_bench(int *set_mode)
 	return (&bench);
 }
 
-void	init_bench(double disorder, int mode, int bench)
+void	init_bench(double disorder, int strategy, int bench)
 {
 	t_bench	*b;
-	int		strategy;
 
-	strategy = mode;
 	b = get_bench(&bench);
 	if (!b)
 		return ;

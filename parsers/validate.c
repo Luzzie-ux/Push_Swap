@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:58:53 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 20:35:42 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 14:32:35 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	validate_flags(char **arg, t_flags *flag)
 			((*flag).flag_name = MEDIUM);
 		else if (!(ft_strncmp(arg[i], "--complex", 10)))
 			((*flag).flag_name = COMPLEX);
-		else if (!(ft_strncmp(arg[i], "--adaptive", 9)))
+		else if (!(ft_strncmp(arg[i], "--adaptive", 10)))
 			((*flag).flag_name = ADAPTIVE);
 		else if (!(ft_strncmp(arg[i], "--bench", 8)))
 			((*flag).bench = 1);

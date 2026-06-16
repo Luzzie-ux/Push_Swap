@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:01:31 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/14 18:45:26 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 15:06:43 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_stack	*setup(char **args, t_flags *flags);
 void	print_bench(void);
 
 t_bench	*get_bench(int *set_mode);
-void	init_bench(double disorder, int mode, int bench);
+void	init_bench(double disorder, int strategy, int bench);
 
 int		execute(t_flags *flags, t_stack **a, t_stack **b);
 
