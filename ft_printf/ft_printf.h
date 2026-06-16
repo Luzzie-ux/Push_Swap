@@ -5,25 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 11:22:04 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/05/08 18:36:03 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/05/07 12:41:11 by diferrei          #+#    #+#             */
+/*   Updated: 2026/06/14 21:19:06 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 
-//prototipos
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
-int		ft_putnbr(long nbr);
-int		ft_putptr(void *ptr);
-int		ft_putnbr_un(unsigned int nbr);
-int		ft_puthex(unsigned int nbr, char format);
-int		ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
+int	ft_putnbr(int n);
+int	ft_putnbr_unsigned(unsigned int nb);
+int	ft_putchar(char c);
+int	ft_putstr(char *s);
+int	ft_putnbr_hex(unsigned long nb, char c);
+int	ft_putptr(void *ptr);
 
 #endif

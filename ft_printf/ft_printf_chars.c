@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printf_chars.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 12:13:07 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/08 15:50:29 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/05/08 12:12:01 by diferrei          #+#    #+#             */
+/*   Updated: 2026/05/21 10:41:19 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "libft.h"
-
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar(char c)
 {
-	write(fd, &c, 1);
+	return (write(2, &c, 1));
+}
+
+int	ft_putstr(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (write(2, "(null)", 6));
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	write(2, s, i);
+	return (i);
 }

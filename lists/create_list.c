@@ -6,32 +6,59 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 15:41:38 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/11 11:54:40 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 17:49:08 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-void	free_list(t_list *head)
+int	is_sorted(t_stack *stack)
 {
-	t_list	*temp;
-
-	if (!head)
-		return ;
-	while (head)
+	if (!stack)
+		return (1);
+	while (stack->next)
 	{
-		temp = head;
-		head = head->next;
-		free(temp);
+		if (stack->i > stack->next->i)
+			return (0);
+		stack = stack->next;
 	}
+	return (1);
 }
 
-t_list	*create_list(int *arr, int size)
+int	get_stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+t_stack	*create_list(int *arr, int size)
 {
 	int		i;
-	t_list	*head;
-	t_list	*tail;
-	t_list	*new_node;
+	t_stack	*head;
+	t_stack	*tail;
+	t_stack	*new_node;
 
 	i = 0;
 	head = NULL;
@@ -39,10 +66,12 @@ t_list	*create_list(int *arr, int size)
 	while (i < size)
 	{
 		new_node = ft_lstnew(arr[i++]);
+		if (!new_node)
+			return (free_stack(&head), NULL);
 		if (!head)
 			head = new_node;
 		else
-			ft_lstadd_back(&tail, new_node);
+			tail->next = new_node;
 		tail = new_node;
 	}
 	return (head);

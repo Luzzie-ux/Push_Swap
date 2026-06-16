@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 14:53:20 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/06/13 19:12:46 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:20:43 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,18 @@ int	check_errors(char **num)
 	i = 0;
 	val = 0;
 	if (check_for_duple(num))
-		return (ft_putstr_fd("Found duple\n", 2), 1);
+		return (1);
 	while (num[i])
 	{
 		val = ft_atol(num[i]);
 		if (val > INT_MAX || val < INT_MIN)
-			return (ft_putstr_fd("Overflow\n", 2), 1);
+			return (1);
 		else if (check_for_letters(num[i]))
-			return (ft_putstr_fd("Found letter\n", 2), 1);
+			return (1);
 		else if (check_for_signs(num[i]))
-			return (ft_putstr_fd("Found signs\n", 2), 1);
+			return (1);
 		i++;
 	}
-	if (check_for_duple2(num))
-		return (ft_putstr_fd("Found duple\n", 2), 1);
 	return (0);
 }
 
@@ -48,7 +46,7 @@ int	check_for_duple(char **copy)
 		j = i + 1;
 		while (copy[j])
 		{
-			if (ft_strcmp(copy[i], copy[j]) == 0)
+			if (ft_atoi(copy[i]) == ft_atoi(copy[j]))
 				return (1);
 			j++;
 		}
@@ -91,26 +89,6 @@ int	check_for_signs(char *copy)
 			return (1);
 		else if (copy[i] == '/')
 			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_for_duple2(char **copy)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (copy[i])
-	{
-		j = i + 1;
-		while (copy[j])
-		{
-			if (ft_atoi(copy[i]) == ft_atoi(copy[j]))
-				return (1);
-			j++;
-		}
 		i++;
 	}
 	return (0);
