@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_chars.c                                  :+:      :+:    :+:   */
+/*   ft_fprintf_chars.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,24 +9,25 @@
 /*   Updated: 2026/05/21 10:41:19 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	ft_putchar(char c)
+#include "ft_fprintf.h"
+
+int	ft_fputchar(int fd, char c)
 {
-	return (write(2, &c, 1));
+	return (write(fd, &c, 1));
 }
 
-int	ft_putstr(char *s)
+int	ft_fputstr(int fd, char *s)
 {
 	int	i;
 
 	if (!s)
-		return (write(2, "(null)", 6));
+		return (write(fd, "(null)", 6));
 	i = 0;
 	while (s[i] != '\0')
 	{
 		i++;
 	}
-	write(2, s, i);
+	write(fd, s, i);
 	return (i);
 }

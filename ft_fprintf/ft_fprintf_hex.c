@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_hex.c                                    :+:      :+:    :+:   */
+/*   ft_fprintf_hex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,9 +9,10 @@
 /*   Updated: 2026/05/21 10:42:20 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	ft_putnbr_hex(unsigned long nb, char c)
+#include "ft_fprintf.h"
+
+int	ft_fputnbr_hex(int fd, unsigned long nb, char c)
 {
 	int		len;
 	int		i;
@@ -27,7 +28,7 @@ int	ft_putnbr_hex(unsigned long nb, char c)
 	i = 0;
 	len = 0;
 	if (nb == 0)
-		return (write(2, "0", 1));
+		return (write(fd, "0", 1));
 	while (nb > 0)
 	{
 		x[i++] = base[nb % 16];
@@ -35,11 +36,11 @@ int	ft_putnbr_hex(unsigned long nb, char c)
 	}
 	len += i;
 	while (--i >= 0)
-		write(2, &x[i], 1);
+		write(fd, &x[i], 1);
 	return (len);
 }
 
-int	ft_putptr(void *ptr)
+int	ft_fputptr(int fd, void *ptr)
 {
 	int				len;
 	unsigned long	adress;
@@ -49,6 +50,6 @@ int	ft_putptr(void *ptr)
 	if (adress == 0)
 		return (write(2, "(nil)", 5));
 	write(1, "0x", 2);
-	len += ft_putnbr_hex(adress, 'x');
+	len += ft_fputnbr_hex(fd, adress, 'x');
 	return (len);
 }

@@ -23,9 +23,9 @@ static void	print_disorder_to_bench(t_bench *b)
 		dec_part = -dec_part;
 	write(2, "[bench] disorder:  ", 19);
 	if (dec_part < 10)
-		ft_printf("%d.0%d%%\n", int_part, dec_part);
+		ft_fprintf(2, "%d.0%d%%\n", int_part, dec_part);
 	else
-		ft_printf("%d.%d%%\n", int_part, dec_part);
+		ft_fprintf(2, "%d.%d%%\n", int_part, dec_part);
 }
 
 void	print_bench(void)
@@ -36,11 +36,11 @@ void	print_bench(void)
 	if (!b)
 		return ;
 	print_disorder_to_bench(b);
-	ft_printf("[bench] strategy:  %s\n", b->strategy);
-	ft_printf("[bench] total_ops: %d\n", b->total_operations);
-	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+	ft_fprintf(2, "[bench] strategy:  %s\n", b->strategy);
+	ft_fprintf(2, "[bench] total_ops: %d\n", b->total_operations);
+	ft_fprintf(2, "[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
 		b->sa, b->sb, b->ss, b->pa, b->pb);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra: %d  rrb: %d  rrr: %d\n",
+	ft_fprintf(2, "[bench] ra:  %d  rb:  %d  rr:  %d  rra: %d  rrb: %d  rrr: %d\n",
 		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
 

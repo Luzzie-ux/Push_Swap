@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_fprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_fprintf.h"
 
-static int	ft_conversion(va_list args, char format)
+static int	ft_fconversion(int fd, va_list args, char format)
 {
 	int	len;
 
 	len = 0;
 	if (format == 'c')
-		len += ft_putchar(va_arg(args, int));
+		len += ft_fputchar(fd, va_arg(args, int));
 	else if (format == '%')
-		len += ft_putchar('%');
+		len += ft_fputchar(fd, '%');
 	else if (format == 's')
-		len += ft_putstr(va_arg(args, char *));
+		len += ft_fputstr(fd, va_arg(args, char *));
 	else if (format == 'p')
-		len += ft_putptr(va_arg(args, void *));
+		len += ft_fputptr(fd, va_arg(args, void *));
 	else if (format == 'x' || format == 'X')
-		len += ft_putnbr_hex((unsigned int)va_arg(args, unsigned long), format);
+		len += ft_fputnbr_hex(fd, (unsigned int)va_arg(args, unsigned long), format);
 	else if (format == 'd' || format == 'i')
-		len += ft_putnbr(va_arg(args, int));
+		len += ft_fputnbr(fd, va_arg(args, int));
 	else if (format == 'u')
-		len += ft_putnbr_unsigned(va_arg(args, unsigned int));
+		len += ft_fputnbr_unsigned(fd, va_arg(args, unsigned int));
 	return (len);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_fprintf(int fd, const char *format, ...)
 {
 	int		i;
 	int		total_len;
@@ -48,10 +48,10 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-			total_len += ft_putchar(format[i]);
+			total_len += ft_fputchar(fd, format[i]);
 		else if (format[i] == '%')
 		{
-			total_len += ft_conversion(args, format[i + 1]);
+			total_len += ft_fconversion(fd, args, format[i + 1]);
 			i++;
 		}
 		i++;

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_fprintf/ft_fprintf.h"
 #include "incs/push_swap.h"
 
 int	main(int argc, char **argv)
@@ -24,7 +25,7 @@ int	main(int argc, char **argv)
 	flags.flag_name = ADAPTIVE;
 	args = matrix(argc - 1, argv + 1, &flags);
 	if (!args || flags.flag_name == ERROR)
-		return (write(2, "Error\n", 6), free(args), 1);
+		return (ft_fprintf(2, "Error\n"), free(args), 1);
 	a = setup(args, &flags);
 	b = NULL;
 	execute(&flags, &a, &b);

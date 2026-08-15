@@ -85,12 +85,15 @@ t_stack	*setup(char **args, t_flags *flags)
 
 	validate_args(args, flags);
 	if (flags->flag_name == ERROR)
-		return (write(2, "Error\n", 6), free_matrix(args), exit(1), NULL);
+	{
+		ft_fprintf(2, "Error\n");
+		return (exit(1), free_matrix(args), NULL);
+	}
 	a = create_list(flags->numbers, flags->nsize);
 	free(flags->numbers);
 	flags->numbers = NULL;
 	if (!a)
-		return (write(2, "Error\n", 6), exit(1), NULL);
+		return (ft_fprintf(2, "Error\n"), exit(1), NULL);
 	set_index(a);
 	return (a);
 }

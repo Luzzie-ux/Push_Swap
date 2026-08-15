@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libftfprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
-HDRS = ft_printf.h
-SRCS = ft_printf.c ft_printf_chars.c ft_printf_numbers.c ft_printf_hex.c
+HDRS = ft_fprintf.h
+SRCS = ft_fprintf.c ft_fprintf_chars.c ft_fprintf_numbers.c ft_fprintf_hex.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_numbers.c                                :+:      :+:    :+:   */
+/*   ft_fprintf_numbers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diferrei <diferrei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,9 +9,10 @@
 /*   Updated: 2026/05/21 10:41:49 by diferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	ft_putnbr(int n)
+#include "ft_fprintf.h"
+
+int	ft_fputnbr(int fd, int n)
 {
 	unsigned int	nb;
 	int				len;
@@ -22,13 +23,13 @@ int	ft_putnbr(int n)
 	len = 0;
 	if (n < 0)
 	{
-		len += write(2, "-", 1);
+		len += write(fd, "-", 1);
 		nb = (unsigned int)(-n);
 	}
 	else
 		nb = (unsigned int)n;
 	if (nb == 0)
-		return (write(2, "0", 1));
+		return (write(fd, "0", 1));
 	while (nb > 0)
 	{
 		x[i++] = (nb % 10) + '0';
@@ -36,11 +37,11 @@ int	ft_putnbr(int n)
 	}
 	len += i;
 	while (--i >= 0)
-		write(2, &x[i], 1);
+		write(fd, &x[i], 1);
 	return (len);
 }
 
-int	ft_putnbr_unsigned(unsigned int nb)
+int	ft_fputnbr_unsigned(int fd, unsigned int nb)
 {
 	int		len;
 	int		i;
@@ -49,7 +50,7 @@ int	ft_putnbr_unsigned(unsigned int nb)
 	len = 0;
 	i = 0;
 	if (nb == 0)
-		return (write(2, "0", 1));
+		return (write(fd, "0", 1));
 	while (nb > 0)
 	{
 		x[i++] = (nb % 10) + '0';
@@ -57,6 +58,6 @@ int	ft_putnbr_unsigned(unsigned int nb)
 	}
 	len += i;
 	while (--i >= 0)
-		write(2, &x[i], 1);
+		write(fd, &x[i], 1);
 	return (len);
 }

@@ -57,7 +57,7 @@ char	**matrix(int argc, char **argv, t_flags *flags)
 	while (i < argc)
 	{
 		if (argv[i][0] == '\0' || (argv[i][0] == ' ' && argv[i][1] == '\0'))
-			return (write(2, "Error\n", 6), exit(1), NULL);
+			return (ft_fprintf(2, "Error\n"), exit(1), NULL);
 		total_lenght += ft_strlen(argv[i]);
 		i++;
 	}

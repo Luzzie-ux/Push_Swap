@@ -3,17 +3,17 @@
 ---
 
 # **Description**
-The `ft_printf` requires one to recode the standard C library function: `printf()`. The goal is to create a versatile library (`libftprintf.a`) that handles various format specifiers and mimics the behavior of the original function.
+The `ft_fprintf` requires one to recode the standard C library function: `fprintf()`. The goal is to create a versatile library (`libftfprintf.a`) that handles various format specifiers, file descriptors and mimics the behavior of the original function.
 
 This project allows you to learn more about **variadic functions** in C (using `<stdarg.h>`) aswell as reinforcing the understanding of data types, memory representation, and hexadecimal/numerical conversions.
 
 --- 
 
 ## **Algorithm Explanation**
-The core of `ft_printf` is a conversion function designed to parse a format string and handle data on the fly..
+The core of `ft_fprintf` is a conversion function designed to parse a format string and handle data on the fly..
 
 ### **1. The Variadic Engine**
-Since `printf` takes an unknown number of arguments, we use `va_list`, `va_start`, `va_arg`, and `va_end`. These macros allow the function to "step through" the stack to retrieve data based on the specifier found in the format string.
+Since `fprintf` takes an unknown number of arguments, we use `va_list`, `va_start`, `va_arg`, and `va_end`. These macros allow the function to "step through" the stack to retrieve data based on the specifier found in the format string.
 
 ### **2. Ft_conversion**
 As the function iterates through the string, it looks for the `%` symbol. Once found, it evaluates the next character:
@@ -35,25 +35,25 @@ To compile the library, run the following command in the terminal:
 ```bash
 make
 ```
-This will generate the libftprintf.a file. The Makefile includes the requested rules: all, clean, fclean, and re.
+This will generate the libftfprintf.a file. The Makefile includes the requested rules: all, clean, fclean, and re.
 
 ## **Usage in a Project**
-To use `ft_printf` in your own C projects, include the header and link the library during compilation:
+To use `ft_fprintf` in your own C projects, include the header and link the library during compilation:
 
 ```c
 
-#include "ft_printf.h"
+#include "ft_fprintf.h"
 
 int main()
 {
-    ft_printf("Hello %s, the answer is %d.\n", "World", 42);
+    ft_fprintf(1, "Hello %s, the answer is %d.\n", "World", 42);
     return (0);
 }
 ```
 
 Compile with:
 ```bash
-cc main.c libftprintf.a -o my_program
+cc main.c libftfprintf.a -o my_program
 ```
 ---
 
@@ -67,7 +67,7 @@ Structure: The project is split into multiple files (chars, numbers, hex) to com
 # **Resources**
 [Variadic Functions in C](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/stdarg.h.html)- Official documentation on handling the stdarg.h library.
 
-[Breakdown on printf functionality](https://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html) - Understanding the printf function.
+[Breakdown on fprintf functionality](https://pubs.opengroup.org/onlinepubs/009695399/functions/fprintf.html) - Understanding the fprintf function.
 
 # **AI Usages**
 AI was used in this project for the following tasks:

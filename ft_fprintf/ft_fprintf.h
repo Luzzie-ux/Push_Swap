@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_fprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_FPRINTF_H
+# define FT_FPRINTF_H
 
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_putnbr(int n);
-int	ft_putnbr_unsigned(unsigned int nb);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr_hex(unsigned long nb, char c);
-int	ft_putptr(void *ptr);
+int	ft_fprintf(int fd, const char *format, ...);
+int	ft_fputnbr(int fd, int n);
+int	ft_fputnbr_unsigned(int fd, unsigned int nb);
+int	ft_fputchar(int fd, char c);
+int	ft_fputstr(int fd, char *s);
+int	ft_fputnbr_hex(int fd, unsigned long nb, char c);
+int	ft_fputptr(int fd, void *ptr);
 
 #endif
