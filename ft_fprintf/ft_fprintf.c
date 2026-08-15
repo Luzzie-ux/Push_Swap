@@ -42,7 +42,7 @@ int	ft_fprintf(int fd, const char *format, ...)
 
 	i = 0;
 	total_len = 0;
-	if (!format)
+	if (!format || fd < 0)
 		return (-1);
 	va_start(args, format);
 	while (format[i])
